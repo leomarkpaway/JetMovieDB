@@ -2,4 +2,5 @@
     <string name="app_name">MovieApp</string>
     <string name="title"><b>Movies</b></string>
     <string name="sort"><b>Sort</b></string>
+    <string name="short_movie_detail">%1$s - %2$s</string>
 </resources>
