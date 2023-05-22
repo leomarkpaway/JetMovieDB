@@ -14,5 +14,6 @@ data class Movie(
     val genre: String,
     val released_date: String,
     val trailer_link: String,
-    val isOnWatchlist: Boolean? = false
+    val isOnWatchlist: Boolean? = false,
+    val image: String,
 )
