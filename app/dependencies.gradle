@@ -1,0 +1,117 @@
+ext {
+
+    // Common dependency
+    androidx_version = "1.7.0"
+    appcompat_version = "1.6.1"
+    constraint_layout_version = "2.1.4"
+
+    androidx = [
+            core_ktx         : "androidx.core:core-ktx:$androidx_version",
+            appcompat        : "androidx.appcompat:appcompat:$appcompat_version",
+            constraint_layout: "androidx.constraintlayout:$constraint_layout_version"
+    ]
+
+    // Common test junit
+    junit_version = "4.13.2"
+    test_junit_version = "1.1.5"
+    espresso_core_version = "3.5.1"
+
+    junit_test = [
+            junit        : "junit:junit:$junit_version",
+            ext_junit    : "androidx.test.ext:junit:$test_junit_version",
+            espresso_core: "androidx.test.espresso:espresso-core:$espresso_core_version"
+    ]
+
+    // Lifecycle
+    lifecycle_version = "2.4.1"
+
+    lifecycle = [
+            runtime               : "androidx.lifecycle:lifecycle-runtime-ktx:$lifecycle_version",
+            compiler              : "androidx.lifecycle:lifecycle-compiler:$lifecycle_version",
+            view_model            : "androidx.lifecycle:lifecycle-viewmodel-ktx:$lifecycle_version",
+            view_model_compose    : "androidx.lifecycle:lifecycle-viewmodel-compose:$lifecycle_version",
+            view_model_saved_state: "androidx.lifecycle:lifecycle-viewmodel-savedstate:$lifecycle_version"
+    ]
+
+    // Hilt for dependency injection
+    hilt_version = "2.44.2"
+
+    hilt = [
+            plugin: "com.google.dagger:hilt-android-gradle-plugin:$hilt_version",
+            android    : "com.google.dagger:hilt-android:$hilt_version",
+            compiler: "com.google.dagger:hilt-android-compiler:$hilt_version"
+    ]
+
+    // Room for local data storage
+    room_version = "2.4.1"
+
+    room = [
+            runtime : "androidx.room:room-runtime:$room_version",
+            compiler: "androidx.room:room-compiler:$room_version",
+            ktx     : "androidx.room:room-ktx:$room_version",
+            testing : "androidx.room:room-testing:$room_version"
+    ]
+
+    // Flow for reactive programming
+    coroutines_version = "1.5.0"
+
+    coroutines = [
+            coroutines_android: "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_version",
+            coroutines_core   : "org.jetbrains.kotlinx:kotlinx-coroutines-core:$coroutines_version"
+    ]
+
+    // Material Design 2 for UI components
+    material_design_version = "1.8.0"
+
+    google = [
+            material: "com.google.android.material:material:$material_design_version"
+    ]
+
+    // Navigation Component for in-app navigation
+    navigation_version = "2.5.3"
+
+    navigation = [
+            fragment: "androidx.navigation:navigation-fragment-ktx:$navigation_version",
+            ui      : "androidx.navigation:navigation-ui-ktx:$navigation_version",
+            safe_args: "androidx.navigation:navigation-safe-args-gradle-plugin:$navigation_version"
+    ]
+
+    // Coil for image loader
+    coil_version = "2.2.2"
+
+    coil = [
+            io: "io.coil-kt:coil:$coil_version"
+    ]
+
+    // Preferences data store
+    data_store_version = "1.0.0" // alpha 4 version
+
+    data_store = [
+            preferences:"androidx.datastore:datastore-preferences:$data_store_version"
+    ]
+
+    // Retrofit
+    retrofitVersion = "2.9.0"
+    retrofitDependencies = [
+            adapterRxJava2          : "com.squareup.retrofit2:adapter-rxjava2:$retrofitVersion",
+            retrofit                : "com.squareup.retrofit2:retrofit:$retrofitVersion",
+            converterGson           : "com.squareup.retrofit2:converter-gson:$retrofitVersion",
+            converterMoshi          : "com.squareup.retrofit2:converter-moshi:$retrofitVersion"
+    ]
+
+    // OkHttp
+    okHttpVersion = "5.0.0-alpha.2"
+    okHttpDependencies = [
+            okHttp                  : "com.squareup.okhttp3:okhttp:$okHttpVersion",
+            loggingInterceptor      : "com.squareup.okhttp3:logging-interceptor:$okHttpVersion"
+    ]
+
+    // Moshi
+    moshiVersion = "1.14.0"
+    moshiDependencies = [
+            moshi                       : "com.squareup.moshi:moshi:$moshiVersion",
+            moshiKotlin                 : "com.squareup.moshi:moshi-kotlin:$moshiVersion",
+            moshiKotlinCodeGen          : "com.squareup.moshi:moshi-kotlin-codegen:$moshiVersion"
+    ]
+
+}
