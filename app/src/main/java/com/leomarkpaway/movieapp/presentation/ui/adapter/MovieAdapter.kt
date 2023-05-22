@@ -1,11 +1,14 @@
 package com.leomarkpaway.movieapp.presentation.ui.adapter
 
 import android.content.Context
+import android.graphics.Bitmap
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.leomarkpaway.movieapp.R
+import com.leomarkpaway.movieapp.common.util.convertByteArrayToBitmap
+import com.leomarkpaway.movieapp.common.util.openAsset
 import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 import com.leomarkpaway.movieapp.databinding.ItemMovieBinding
 
@@ -22,8 +25,13 @@ class MovieAdapter(
             tvTitle.text = item.title
             tvShortDetail.text =
                 context.getString(R.string.short_movie_detail, item.duration, item.genre)
+            image.setImageBitmap(byteArrayToBitmap(item.image))
             root.setOnClickListener { onClickItem(item.id) }
         }
+
+        private fun byteArrayToBitmap(fileName: String) =
+            context.openAsset(fileName).readBytes().convertByteArrayToBitmap()
+
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieHolder {
