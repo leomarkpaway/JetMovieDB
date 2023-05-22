@@ -8,7 +8,7 @@ import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 @Dao
 interface MovieDao : BaseDao<Movie> {
 
-    @Query("SELECT * FROM movie ORDER BY id DESC")
+    @Query("SELECT * FROM movie ORDER BY title ASC")
     suspend fun getAllMovie(): List<Movie>
 
 }
