@@ -7,8 +7,8 @@ import com.leomarkpaway.movieapp.domain.repository.MovieRepository
 class MovieRepositoryImpl(
     private val appDatabase: AppDatabase
 ) : MovieRepository {
-    override suspend fun addMovie(movie: Movie) {
-        appDatabase.movieDao().insert(movie)
+    override suspend fun addMovie(movie: List<Movie>) {
+        appDatabase.movieDao().insertAll(movie)
     }
 
     override suspend fun getAllMovies(): List<Movie> {

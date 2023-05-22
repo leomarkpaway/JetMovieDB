@@ -7,7 +7,7 @@ import kotlinx.coroutines.flow.flow
 import javax.inject.Inject
 
 class AddMovieUseCase @Inject constructor(private val repository: MovieRepository) {
-    operator fun invoke(movie: Movie): Flow<Unit> = flow {
+    operator fun invoke(movie: List<Movie>): Flow<Unit> = flow {
         try { emit(repository.addMovie(movie)) }
         catch (e: Exception) { e.printStackTrace() }
     }
