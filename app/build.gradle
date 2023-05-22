@@ -1,7 +1,13 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
+    id 'androidx.navigation.safeargs.kotlin'
+    id 'kotlin-parcelize'
 }
+
+apply from: "dependencies.gradle"
 
 android {
     namespace 'com.leomarkpaway.movieapp'
@@ -30,15 +36,60 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
+    buildFeatures {
+        dataBinding = true
+    }
 }
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.7.0'
-    implementation 'androidx.appcompat:appcompat:1.6.1'
-    implementation 'com.google.android.material:material:1.9.0'
-    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
-    testImplementation 'junit:junit:4.13.2'
-    androidTestImplementation 'androidx.test.ext:junit:1.1.5'
-    androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
+    // Common
+    implementation androidx.core_ktx
+    implementation androidx.appcompat
+
+    // Common test junit
+    testImplementation junit_test.junit
+    androidTestImplementation junit_test.ext_junit
+    androidTestImplementation junit_test.espresso_core
+
+    // hilt
+    implementation hilt.android
+    kapt hilt.compiler
+
+    // room
+    implementation room.runtime
+    kapt room.compiler
+    implementation room.ktx
+    testImplementation room.testing
+
+    // coroutines flow
+    implementation coroutines.coroutines_android
+    implementation coroutines.coroutines_core
+
+    // material design
+    implementation google.material
+
+    // navigation
+    implementation navigation.fragment
+    implementation navigation.ui
+
+    // coil image loader
+    implementation coil.io
+
+    // Retrofit
+    implementation retrofitDependencies.retrofit
+    implementation retrofitDependencies.converterGson
+    implementation retrofitDependencies.converterMoshi
+    implementation retrofitDependencies.adapterRxJava2
+
+    // OkHttp
+    implementation okHttpDependencies.okHttp
+    implementation okHttpDependencies.loggingInterceptor
+
+    // Moshi
+    implementation moshiDependencies.moshi
+    implementation moshiDependencies.moshiKotlin
+    kapt moshiDependencies.moshiKotlinCodeGen
+
+
 }
