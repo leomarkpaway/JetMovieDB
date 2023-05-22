@@ -2,6 +2,7 @@ package com.leomarkpaway.movieapp.data.source.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.leomarkpaway.movieapp.data.source.local.dao.MovieDao
 import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 
 const val VERSION_NUMBER = 1
@@ -12,6 +13,6 @@ const val VERSION_NUMBER = 1
 )
 abstract class AppDatabase: RoomDatabase() {
 
-    //TODO add abstract DAO here
+    abstract fun movieDao() : MovieDao
 
 }
