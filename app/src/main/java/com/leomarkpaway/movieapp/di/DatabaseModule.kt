@@ -24,6 +24,8 @@ object DatabaseModule {
         ).build()
     }
 
-    //TODO add provider DAO here
+    @Provides
+    @Singleton
+    fun provideMovieDao(database: AppDatabase) = database.movieDao()
 
 }
