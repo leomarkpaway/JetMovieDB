@@ -8,10 +8,10 @@ class MovieRepositoryImpl(
     private val appDatabase: AppDatabase
 ) : MovieRepository {
     override suspend fun addMovie(movie: Movie) {
-        TODO("Not yet implemented")
+        appDatabase.movieDao().insert(movie)
     }
 
     override suspend fun getAllMovies(): List<Movie> {
-        TODO("Not yet implemented")
+        return appDatabase.movieDao().getAllMovie()
     }
 }
