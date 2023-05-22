@@ -2,11 +2,12 @@ package com.leomarkpaway.movieapp.data.source.local.database
 
 import androidx.room.Database
 import androidx.room.RoomDatabase
+import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 
 const val VERSION_NUMBER = 1
 
 @Database(
-    entities = [/*TODO add your entity class here*/],
+    entities = [Movie::class],
     version = VERSION_NUMBER
 )
 abstract class AppDatabase: RoomDatabase() {
