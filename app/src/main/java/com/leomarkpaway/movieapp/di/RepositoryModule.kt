@@ -1,13 +1,22 @@
 package com.leomarkpaway.movieapp.di
 
+import com.leomarkpaway.movieapp.data.repository.MovieRepositoryImpl
+import com.leomarkpaway.movieapp.data.source.local.database.AppDatabase
+import com.leomarkpaway.movieapp.domain.repository.MovieRepository
 import dagger.Module
+import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object RepositoryModule {
 
-    //TODO add provider Repository here
+    @Provides
+    @Singleton
+    fun provideMovieRepository(appDatabase: AppDatabase) : MovieRepository {
+        return MovieRepositoryImpl(appDatabase = appDatabase)
+    }
 
 }
