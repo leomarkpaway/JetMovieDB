@@ -1,6 +1,5 @@
 package com.leomarkpaway.movieapp.presentation.ui
 
-import android.util.Log
 import androidx.activity.viewModels
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -49,7 +48,8 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>() 
                 duration = "2h 30 min",
                 genre = "Action, Sci-Fi",
                 released_date = "3 September 2020",
-                trailer_link = "https://www.youtube.com/watch?v=LdOM0x0XDMo"
+                trailer_link = "https://www.youtube.com/watch?v=LdOM0x0XDMo",
+                image = "Tenet.png"
             ),
             Movie(
                 title = "Spider-Man: Into the Spider-Verse",
@@ -58,7 +58,8 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>() 
                 duration = "1h 57min",
                 genre = "Action, Animation, Adventure",
                 released_date = "14 December 2018 Trailer",
-                trailer_link = "https://www.youtube.com/watch?v=tg52up16eq0 "
+                trailer_link = "https://www.youtube.com/watch?v=tg52up16eq0",
+                image = "Spider Man.png"
             ),
             Movie(
                 title = "Knives Out",
@@ -67,7 +68,8 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>() 
                 duration = "2h 10min",
                 genre = "Comedy, Crime, Drama",
                 released_date = "27 November 2019",
-                trailer_link = "https://www.youtube.com/watch?v=qGqiHJTsRkQ"
+                trailer_link = "https://www.youtube.com/watch?v=qGqiHJTsRkQ",
+                image = "Knives Out.png"
             ),
             Movie(
                 title = "Guardians of the Galaxy",
@@ -76,7 +78,8 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>() 
                 duration = "2h 1min",
                 genre = "Action, Adventure, Comedy",
                 released_date = "1 August 2014",
-                trailer_link = "https://www.youtube.com/watch?v=d96cjJhvlMA"
+                trailer_link = "https://www.youtube.com/watch?v=d96cjJhvlMA",
+                image = "Guardians of The Galaxy.png"
             ),
             Movie(
                 title = "Avengers: Age of Ultron",
@@ -85,7 +88,8 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>() 
                 duration = "2h 21min",
                 genre = "Action, Adventure, Sci-Fi",
                 released_date = "1 May 2015",
-                trailer_link = "https://www.youtube.com/watch?v=tmeOjFno6Do"
+                trailer_link = "https://www.youtube.com/watch?v=tmeOjFno6Do",
+                image = "Avengers.png"
             )
         )
     }
