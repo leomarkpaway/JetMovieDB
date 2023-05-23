@@ -2,33 +2,48 @@ package com.leomarkpaway.movieapp.presentation.viewmodel
 
 import androidx.lifecycle.viewModelScope
 import com.leomarkpaway.movieapp.common.base.BaseViewModel
+import com.leomarkpaway.movieapp.common.util.convertDateToMillis
 import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 import com.leomarkpaway.movieapp.domain.usecase.AddMovieUseCase
 import com.leomarkpaway.movieapp.domain.usecase.GetAllMovieUseCase
+import com.leomarkpaway.movieapp.domain.usecase.SortByDateUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.asStateFlow
-import kotlinx.coroutines.flow.map
 import kotlinx.coroutines.flow.flowOf
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @HiltViewModel
 class MainActivityViewModel @Inject constructor(
     private val addMovieUseCase: AddMovieUseCase,
-    private val getAllMovieUseCase: GetAllMovieUseCase
+    private val getAllMovieUseCase: GetAllMovieUseCase,
+    private val sortByDateUseCase: SortByDateUseCase
 ) : BaseViewModel() {
 
     private val _allMovie = MutableStateFlow<List<Movie>?>(null)
     val allMovie = _allMovie.asStateFlow()
 
+    private val _isSortByDate = MutableStateFlow(false)
+    val isSortByDate = _isSortByDate.asStateFlow()
+
     fun addMovie() = addMovieUseCase(movies).launchIn(viewModelScope)
 
     fun getAllMovies() {
         getAllMovieUseCase.invoke().map { movies ->
-            launchDataOperation(flow = flowOf(movies), onSuccess = {data -> _allMovie.value = data})
-            getAllMovies()
+            launchDataOperation(flowOf(movies)) {data -> _allMovie.value = data}
         }.launchIn(viewModelScope)
+    }
+
+    fun sortByDate() {
+        sortByDateUseCase.invoke().map { movies ->
+            launchDataOperation(flowOf(movies)) {data -> _allMovie.value = data}
+        }.launchIn(viewModelScope)
+    }
+
+    fun updateIsSortByDate(boolean: Boolean) {
+        launchDataOperation(flowOf(boolean)) { _isSortByDate.value = it }
     }
 
     companion object {
@@ -39,7 +54,7 @@ class MainActivityViewModel @Inject constructor(
                 rating = "7.8",
                 duration = "2h 30 min",
                 genre = "Action, Sci-Fi",
-                released_date = "3 September 2020",
+                released_date_millis = convertDateToMillis("3 September 2020"),
                 trailer_link = "https://www.youtube.com/watch?v=LdOM0x0XDMo",
                 image = "Tenet.png"
             ),
@@ -49,7 +64,7 @@ class MainActivityViewModel @Inject constructor(
                 rating = "8.4",
                 duration = "1h 57min",
                 genre = "Action, Animation, Adventure",
-                released_date = "14 December 2018 Trailer",
+                released_date_millis = convertDateToMillis("14 December 2018"),
                 trailer_link = "https://www.youtube.com/watch?v=tg52up16eq0",
                 image = "Spider Man.png"
             ),
@@ -59,7 +74,7 @@ class MainActivityViewModel @Inject constructor(
                 rating = "7.9",
                 duration = "2h 10min",
                 genre = "Comedy, Crime, Drama",
-                released_date = "27 November 2019",
+                released_date_millis = convertDateToMillis("27 November 2019"),
                 trailer_link = "https://www.youtube.com/watch?v=qGqiHJTsRkQ",
                 image = "Knives Out.png"
             ),
@@ -69,7 +84,7 @@ class MainActivityViewModel @Inject constructor(
                 rating = "8.0",
                 duration = "2h 1min",
                 genre = "Action, Adventure, Comedy",
-                released_date = "1 August 2014",
+                released_date_millis = convertDateToMillis("1 August 2014"),
                 trailer_link = "https://www.youtube.com/watch?v=d96cjJhvlMA",
                 image = "Guardians of The Galaxy.png"
             ),
@@ -79,7 +94,7 @@ class MainActivityViewModel @Inject constructor(
                 rating = "7.3",
                 duration = "2h 21min",
                 genre = "Action, Adventure, Sci-Fi",
-                released_date = "1 May 2015",
+                released_date_millis = convertDateToMillis("1 May 2015"),
                 trailer_link = "https://www.youtube.com/watch?v=tmeOjFno6Do",
                 image = "Avengers.png"
             )
