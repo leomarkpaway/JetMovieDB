@@ -5,7 +5,7 @@ import androidx.room.RoomDatabase
 import com.leomarkpaway.movieapp.data.source.local.dao.MovieDao
 import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 
-const val VERSION_NUMBER = 3
+const val VERSION_NUMBER = 4
 
 @Database(
     entities = [Movie::class],
