@@ -25,7 +25,7 @@ class MovieRepositoryImpl(
         preference.saveBoolean(preferenceKey = "preference_key", value = isDataBaseEmpty)
     }
 
-    override suspend fun checkDataBaseState(): Boolean? {
+    override suspend fun getDataBaseState(): Boolean? {
         return preference.getBoolean(preferenceKey = "preference_key")
     }
 }
