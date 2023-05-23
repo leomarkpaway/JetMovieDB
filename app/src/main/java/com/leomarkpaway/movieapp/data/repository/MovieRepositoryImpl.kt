@@ -14,4 +14,8 @@ class MovieRepositoryImpl(
     override suspend fun getAllMovies(): List<Movie> {
         return appDatabase.movieDao().getAllMovie()
     }
+
+    override suspend fun sortByDate(): List<Movie> {
+        return appDatabase.movieDao().sortByDate()
+    }
 }

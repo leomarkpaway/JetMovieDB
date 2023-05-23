@@ -11,4 +11,7 @@ interface MovieDao : BaseDao<Movie> {
     @Query("SELECT * FROM movie ORDER BY title ASC")
     suspend fun getAllMovie(): List<Movie>
 
+    @Query("SELECT * FROM movie ORDER BY released_date_millis ASC")
+    suspend fun sortByDate(): List<Movie>
+
 }
