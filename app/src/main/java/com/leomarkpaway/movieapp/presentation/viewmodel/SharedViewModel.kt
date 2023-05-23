@@ -14,7 +14,7 @@ import kotlinx.coroutines.flow.map
 import javax.inject.Inject
 
 @HiltViewModel
-class MainActivityViewModel @Inject constructor(
+class SharedViewModel @Inject constructor(
     private val addMovieUseCase: AddMovieUseCase,
     private val getAllMovieUseCase: GetAllMovieUseCase,
     private val sortByDateUseCase: SortByDateUseCase,
