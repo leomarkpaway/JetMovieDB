@@ -28,4 +28,8 @@ class MovieRepositoryImpl(
     override suspend fun getDataBaseState(): Boolean? {
         return preference.getBoolean(preferenceKey = "preference_key")
     }
+
+    override suspend fun addToWatchList(id: Long, isOnWatchlist: Boolean) {
+        appDatabase.movieDao().addToWatchList(id, isOnWatchlist)
+    }
 }

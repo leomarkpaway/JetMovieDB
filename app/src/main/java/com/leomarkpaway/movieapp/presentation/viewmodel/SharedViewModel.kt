@@ -19,7 +19,8 @@ class SharedViewModel @Inject constructor(
     private val getAllMovieUseCase: GetAllMovieUseCase,
     private val sortByDateUseCase: SortByDateUseCase,
     private val setDataBaseStateUseCase: SetDataBaseStateUseCase,
-    private val getDataBaseStateUseCase: GetDataBaseStateUseCase
+    private val getDataBaseStateUseCase: GetDataBaseStateUseCase,
+    private val addToWatchListUseCase: AddToWatchListUseCase
 ) : BaseViewModel() {
 
     private val _allMovie = MutableStateFlow<List<Movie>?>(null)
@@ -33,6 +34,9 @@ class SharedViewModel @Inject constructor(
 
     private val _currentMovieSelected = MutableStateFlow<Movie?>(null)
     val currentMovieSelected = _currentMovieSelected.asStateFlow()
+
+    private val _isOnWatchlist = MutableStateFlow<Boolean?>(null)
+    val isOnWatchlist = _isOnWatchlist.asStateFlow()
 
     fun addMovie() = addMovieUseCase(movies).launchIn(viewModelScope)
 
@@ -64,6 +68,14 @@ class SharedViewModel @Inject constructor(
         getDataBaseStateUseCase.invoke().map { dataBaseState ->
             launchDataOperation(flowOf(dataBaseState)) {state -> _isDataBaseEmpty.value = state}
         }.launchIn(viewModelScope)
+    }
+
+    fun updateIsOnWatchlist(isOnWatchlist: Boolean) {
+        launchDataOperation(flowOf(isOnWatchlist)) {boolean -> _isOnWatchlist.value = boolean}
+    }
+
+    fun addToWatchList(id: Long, isOnWatchlist: Boolean) {
+        addToWatchListUseCase(id, isOnWatchlist).launchIn(viewModelScope)
     }
 
     companion object {

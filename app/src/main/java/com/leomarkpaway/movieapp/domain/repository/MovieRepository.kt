@@ -8,4 +8,5 @@ interface MovieRepository {
     suspend fun sortByDate() :List<Movie>
     suspend fun setDataBaseState(isDataBaseEmpty: Boolean)
     suspend fun getDataBaseState() : Boolean?
+    suspend fun addToWatchList(id: Long, isOnWatchlist: Boolean)
 }

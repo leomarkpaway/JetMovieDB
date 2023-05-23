@@ -14,4 +14,7 @@ interface MovieDao : BaseDao<Movie> {
     @Query("SELECT * FROM movie ORDER BY released_date_millis ASC")
     suspend fun sortByDate(): List<Movie>
 
+    @Query("UPDATE movie SET isOnWatchlist = :isOnWatchlist WHERE id = :id")
+    suspend fun addToWatchList(id: Long, isOnWatchlist: Boolean)
+
 }
