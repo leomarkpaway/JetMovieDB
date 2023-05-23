@@ -54,7 +54,7 @@
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
-                    app:layout_constraintStart_toEndOf="@+id/imageView"
+                    app:layout_constraintStart_toEndOf="@+id/img_back"
                     app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintVertical_bias="0.5" />
 
@@ -66,7 +66,6 @@
             android:id="@+id/constraintLayout_movieDetailView"
             android:layout_width="0dp"
             android:layout_height="0dp"
-            android:visibility="invisible"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -84,7 +83,7 @@
                 app:layout_constraintTop_toTopOf="parent">
 
                 <ImageView
-                    android:id="@+id/imageView_movie"
+                    android:id="@+id/img_movie"
                     android:layout_width="0dp"
                     android:layout_height="0dp"
                     android:scaleType="fitCenter"
@@ -100,11 +99,11 @@
                     android:layout_height="wrap_content"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toEndOf="@+id/imageView_movie"
+                    app:layout_constraintStart_toEndOf="@+id/img_movie"
                     app:layout_constraintTop_toTopOf="parent">
 
                     <TextView
-                        android:id="@+id/textView_title"
+                        android:id="@+id/tv_movie_title"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="16dp"
@@ -116,7 +115,7 @@
                         android:textSize="20sp"
                         android:textStyle="bold"
                         app:layout_constraintBottom_toTopOf="@+id/button_watchlist"
-                        app:layout_constraintEnd_toStartOf="@+id/textView_rating"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_rating"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintHorizontal_chainStyle="spread_inside"
                         app:layout_constraintStart_toStartOf="parent"
@@ -124,18 +123,18 @@
                         tools:text="Movie Title" />
 
                     <TextView
-                        android:id="@+id/textView_rating"
+                        android:id="@+id/tv_rating"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="16dp"
                         android:textColor="@color/black"
                         android:textSize="16sp"
                         android:textStyle="bold"
-                        app:layout_constraintBottom_toBottomOf="@+id/textView_title"
+                        app:layout_constraintBottom_toBottomOf="@+id/tv_movie_title"
                         app:layout_constraintEnd_toEndOf="parent"
                         app:layout_constraintHorizontal_bias="0.5"
-                        app:layout_constraintStart_toEndOf="@+id/textView_title"
-                        app:layout_constraintTop_toTopOf="@+id/textView_title"
+                        app:layout_constraintStart_toEndOf="@+id/tv_movie_title"
+                        app:layout_constraintTop_toTopOf="@+id/tv_movie_title"
                         tools:text="7.8/10" />
 
                     <com.google.android.material.button.MaterialButton
@@ -150,8 +149,8 @@
                         app:backgroundTint="@android:color/darker_gray"
                         app:cornerRadius="20dp"
                         app:layout_constraintBottom_toTopOf="@+id/button_watchTrailer"
-                        app:layout_constraintStart_toStartOf="@+id/textView_title"
-                        app:layout_constraintTop_toBottomOf="@+id/textView_title" />
+                        app:layout_constraintStart_toStartOf="@+id/tv_movie_title"
+                        app:layout_constraintTop_toBottomOf="@+id/tv_movie_title" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/button_watchTrailer"
@@ -203,14 +202,14 @@
                     android:textColor="@color/black"
                     android:textSize="16sp"
                     android:textStyle="bold"
-                    app:layout_constraintBottom_toTopOf="@+id/textView_shortDescription_content"
+                    app:layout_constraintBottom_toTopOf="@+id/tv_short_description"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.5"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent" />
 
                 <TextView
-                    android:id="@+id/textView_shortDescription_content"
+                    android:id="@+id/tv_short_description"
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:text="@string/lipsum"
@@ -267,14 +266,14 @@
                         android:text="Genre"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView_details_genre_content"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_movie_genre"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent=".3" />
 
                     <TextView
-                        android:id="@+id/textView_details_genre_content"
+                        android:id="@+id/tv_movie_genre"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"
@@ -299,14 +298,14 @@
                         android:text="Released Date"
                         android:textColor="@color/black"
                         app:layout_constraintBottom_toBottomOf="parent"
-                        app:layout_constraintEnd_toStartOf="@+id/textView_details_releaseDate_content"
+                        app:layout_constraintEnd_toStartOf="@+id/tv_movie_release_date"
                         app:layout_constraintHorizontal_bias="0.5"
                         app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toTopOf="parent"
                         app:layout_constraintWidth_percent=".3" />
 
                     <TextView
-                        android:id="@+id/textView_details_releaseDate_content"
+                        android:id="@+id/tv_movie_release_date"
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="4dp"

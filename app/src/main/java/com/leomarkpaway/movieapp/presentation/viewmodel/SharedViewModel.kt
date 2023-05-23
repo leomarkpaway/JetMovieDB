@@ -31,6 +31,9 @@ class SharedViewModel @Inject constructor(
     private val _isDataBaseEmpty = MutableStateFlow<Boolean?>(null)
     val isDataBaseEmpty = _isDataBaseEmpty.asStateFlow()
 
+    private val _currentMovieSelected = MutableStateFlow<Movie?>(null)
+    val currentMovieSelected = _currentMovieSelected.asStateFlow()
+
     fun addMovie() = addMovieUseCase(movies).launchIn(viewModelScope)
 
     fun getAllMovies() {
@@ -47,6 +50,10 @@ class SharedViewModel @Inject constructor(
 
     fun updateIsSortByDate(boolean: Boolean) {
         launchDataOperation(flowOf(boolean)) { _isSortByDate.value = it }
+    }
+
+    fun setCurrentMovieSelected(movie: Movie) {
+        launchDataOperation(flowOf(movie)) {data -> _currentMovieSelected.value = data }
     }
 
     fun setDataBaseState(isDataBaseEmpty: Boolean) {
