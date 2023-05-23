@@ -3,4 +3,16 @@
     <string name="title"><b>Movies</b></string>
     <string name="sort"><b>Sort</b></string>
     <string name="short_movie_detail">%1$s - %2$s</string>
+    <string name="toolbar_title">Movies</string>
+    <string name="on_my_watchlist">ON MY WATCHLIST</string>
+    <string name="subtitle">%1$s - %2$s</string>
+    <string name="rating">%1$s/10</string>
+    <string name="add_to_watchlist">+ ADD TO WATCHLIST</string>
+    <string name="remove_from_watchlist">REMOVE FROM WATCHLIST</string>
+    <string name="watch_trailer">WATCH TRAILER</string>
+    <string name="short_description">Short Description</string>
+    <string name="lipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</string>
+    <string name="details">Details</string>
+    <string name="sort_title">Sort by title</string>
+    <string name="sort_date">Sort by date</string>
 </resources>
