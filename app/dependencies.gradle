@@ -87,7 +87,8 @@ ext {
     data_store_version = "1.0.0" // alpha 4 version
 
     data_store = [
-            preferences:"androidx.datastore:datastore-preferences:$data_store_version"
+            preferences:"androidx.datastore:datastore-preferences:$data_store_version",
+            core:"androidx.datastore:datastore-preferences-core:$data_store_version"
     ]
 
     // Retrofit
