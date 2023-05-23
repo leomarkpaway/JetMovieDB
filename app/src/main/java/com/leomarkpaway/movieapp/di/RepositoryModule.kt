@@ -2,6 +2,7 @@ package com.leomarkpaway.movieapp.di
 
 import com.leomarkpaway.movieapp.data.repository.MovieRepositoryImpl
 import com.leomarkpaway.movieapp.data.source.local.database.AppDatabase
+import com.leomarkpaway.movieapp.data.source.preference.PreferenceManager
 import com.leomarkpaway.movieapp.domain.repository.MovieRepository
 import dagger.Module
 import dagger.Provides
@@ -15,8 +16,8 @@ object RepositoryModule {
 
     @Provides
     @Singleton
-    fun provideMovieRepository(appDatabase: AppDatabase) : MovieRepository {
-        return MovieRepositoryImpl(appDatabase = appDatabase)
+    fun provideMovieRepository(appDatabase: AppDatabase, preference: PreferenceManager) : MovieRepository {
+        return MovieRepositoryImpl(appDatabase = appDatabase, preference = preference)
     }
 
 }
