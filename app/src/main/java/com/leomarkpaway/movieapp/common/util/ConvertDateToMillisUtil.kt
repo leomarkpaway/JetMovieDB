@@ -13,3 +13,10 @@ fun convertDateToMillis(dateString: String): Long {
     val date: Date? = simpleDateFormat.parse(dateString)
     return date?.time ?: 0
 }
+
+fun formatDateFromMillis(millis: Long): String {
+    val pattern = "dd MMMM yyyy"
+    val dateFormat = SimpleDateFormat(pattern, Locale.getDefault())
+    val date = Date(millis)
+    return dateFormat.format(date)
+}
