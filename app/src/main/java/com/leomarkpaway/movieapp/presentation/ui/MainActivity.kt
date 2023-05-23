@@ -22,19 +22,27 @@ class MainActivity : BaseActivity<MainActivityViewModel, ActivityMainBinding>() 
 
     override fun initViews() {
         super.initViews()
-        viewModel.addMovie()
+        viewModel.setDataBaseState(isDataBaseEmpty = true)
+        viewModel.getDataBaseState()
         onClickSort()
     }
 
     override fun subscribe() {
         super.subscribe()
-        viewModel.allMovie.collectLatestData(lifecycleScope) { movieList ->
-            if (!movieList.isNullOrEmpty()) setupMovieAdapter(movieList)
-        }
-        viewModel.isSortByDate.collectLatestData(lifecycleScope) { isSortByDate ->
-            this.isSortByDate = isSortByDate
-            if (isSortByDate) viewModel.sortByDate()
-            else viewModel.getAllMovies()
+        with(viewModel) {
+            allMovie.collectLatestData(lifecycleScope) { movieList ->
+                if (!movieList.isNullOrEmpty()) {
+                    setupMovieAdapter(movieList)
+                    setDataBaseState(isDataBaseEmpty = false)
+                }
+            }
+            isSortByDate.collectLatestData(lifecycleScope) { isSortByDate ->
+                this@MainActivity.isSortByDate = isSortByDate
+                if (isSortByDate) sortByDate() else getAllMovies()
+            }
+            isDataBaseEmpty.collectLatestData(lifecycleScope) {  state ->
+                if (state == true) addMovie()
+            }
         }
     }
 

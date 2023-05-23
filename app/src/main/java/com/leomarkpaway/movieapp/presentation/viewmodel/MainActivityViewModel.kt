@@ -4,9 +4,7 @@ import androidx.lifecycle.viewModelScope
 import com.leomarkpaway.movieapp.common.base.BaseViewModel
 import com.leomarkpaway.movieapp.common.util.convertDateToMillis
 import com.leomarkpaway.movieapp.data.source.local.entity.Movie
-import com.leomarkpaway.movieapp.domain.usecase.AddMovieUseCase
-import com.leomarkpaway.movieapp.domain.usecase.GetAllMovieUseCase
-import com.leomarkpaway.movieapp.domain.usecase.SortByDateUseCase
+import com.leomarkpaway.movieapp.domain.usecase.*
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.asStateFlow
@@ -19,7 +17,9 @@ import javax.inject.Inject
 class MainActivityViewModel @Inject constructor(
     private val addMovieUseCase: AddMovieUseCase,
     private val getAllMovieUseCase: GetAllMovieUseCase,
-    private val sortByDateUseCase: SortByDateUseCase
+    private val sortByDateUseCase: SortByDateUseCase,
+    private val setDataBaseStateUseCase: SetDataBaseStateUseCase,
+    private val getDataBaseStateUseCase: GetDataBaseStateUseCase
 ) : BaseViewModel() {
 
     private val _allMovie = MutableStateFlow<List<Movie>?>(null)
@@ -27,6 +27,9 @@ class MainActivityViewModel @Inject constructor(
 
     private val _isSortByDate = MutableStateFlow(false)
     val isSortByDate = _isSortByDate.asStateFlow()
+
+    private val _isDataBaseEmpty = MutableStateFlow<Boolean?>(null)
+    val isDataBaseEmpty = _isDataBaseEmpty.asStateFlow()
 
     fun addMovie() = addMovieUseCase(movies).launchIn(viewModelScope)
 
@@ -44,6 +47,16 @@ class MainActivityViewModel @Inject constructor(
 
     fun updateIsSortByDate(boolean: Boolean) {
         launchDataOperation(flowOf(boolean)) { _isSortByDate.value = it }
+    }
+
+    fun setDataBaseState(isDataBaseEmpty: Boolean) {
+        setDataBaseStateUseCase(isDataBaseEmpty).launchIn(viewModelScope)
+    }
+
+    fun getDataBaseState() {
+        getDataBaseStateUseCase.invoke().map { dataBaseState ->
+            launchDataOperation(flowOf(dataBaseState)) {state -> _isDataBaseEmpty.value = state}
+        }.launchIn(viewModelScope)
     }
 
     companion object {
