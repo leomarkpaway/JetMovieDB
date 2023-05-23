@@ -6,4 +6,6 @@ interface MovieRepository {
     suspend fun addMovie(movie: List<Movie>)
     suspend fun getAllMovies() : List<Movie>
     suspend fun sortByDate() :List<Movie>
+    suspend fun setDataBaseState(isDataBaseEmpty: Boolean)
+    suspend fun checkDataBaseState() : Boolean?
 }
