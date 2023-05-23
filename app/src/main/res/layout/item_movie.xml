@@ -14,8 +14,8 @@
             android:layout_height="150dp"
             android:layout_marginVertical="@dimen/spacing_size_14"
             app:cardCornerRadius="@dimen/spacing_size_14"
-            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.textview.MaterialTextView
@@ -25,27 +25,40 @@
             android:layout_marginStart="@dimen/spacing_size_24"
             android:layout_marginTop="@dimen/spacing_size_24"
             android:textColor="@color/black"
+            android:textSize="@dimen/font_size_12"
             android:textStyle="bold"
             app:layout_constraintStart_toEndOf="@+id/image"
             app:layout_constraintTop_toTopOf="@+id/image"
-            android:textSize="@dimen/font_size_12"
             tool:text="Tent" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/tv_short_detail"
-            android:layout_width="wrap_content"
+            android:layout_width="@dimen/spacing_size_0"
             android:layout_height="wrap_content"
-            android:textColor="#7C000000"
             android:layout_marginTop="@dimen/spacing_size_14"
+            android:textColor="#7C000000"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="@+id/tv_title"
             app:layout_constraintTop_toBottomOf="@+id/tv_title"
-            tool:text="short detail"/>
+            tool:text="@string/lipsum" />
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/tv_on_watch_list"
+            android:layout_width="wrap_content"
+            android:visibility="gone"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_size_14"
+            android:text="@string/on_my_watchlist"
+            android:textColor="#C4000000"
+            android:textSize="@dimen/font_size_12"
+            app:layout_constraintStart_toStartOf="@+id/tv_short_detail"
+            app:layout_constraintTop_toBottomOf="@+id/tv_short_detail" />
 
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
             android:background="#37000000"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

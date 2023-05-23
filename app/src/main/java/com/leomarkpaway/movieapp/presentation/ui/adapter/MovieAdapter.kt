@@ -8,7 +8,9 @@ import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.leomarkpaway.movieapp.R
 import com.leomarkpaway.movieapp.common.util.convertByteArrayToBitmap
+import com.leomarkpaway.movieapp.common.util.gone
 import com.leomarkpaway.movieapp.common.util.openAsset
+import com.leomarkpaway.movieapp.common.util.visible
 import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 import com.leomarkpaway.movieapp.databinding.ItemMovieBinding
 
@@ -26,6 +28,7 @@ class MovieAdapter(
             tvShortDetail.text =
                 context.getString(R.string.short_movie_detail, item.duration, item.genre)
             image.setImageBitmap(byteArrayToBitmap(item.image))
+            if (item.isOnWatchlist == true) tvOnWatchList.visible() else tvOnWatchList.gone()
             root.setOnClickListener { onClickItem(item) }
         }
 
