@@ -91,5 +91,7 @@ dependencies {
     implementation moshiDependencies.moshiKotlin
     kapt moshiDependencies.moshiKotlinCodeGen
 
+    // Data store
+    implementation data_store.preferences
 
 }
