@@ -1,16 +1,14 @@
 package com.leomarkpaway.movieapp.presentation.ui.fragments
 
-import android.content.Intent
-import android.net.Uri
-import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import com.leomarkpaway.movieapp.R
 import com.leomarkpaway.movieapp.common.base.BaseFragment
 import com.leomarkpaway.movieapp.common.util.collectLatestData
-import com.leomarkpaway.movieapp.common.util.convertByteArrayToBitmap
 import com.leomarkpaway.movieapp.common.util.formatDateFromMillis
 import com.leomarkpaway.movieapp.common.util.openAsset
+import com.leomarkpaway.movieapp.common.util.convertByteArrayToBitmap
+import com.leomarkpaway.movieapp.common.util.createBrowserIntent
 import com.leomarkpaway.movieapp.data.source.local.entity.Movie
 import com.leomarkpaway.movieapp.databinding.FragmentMovieDetailBinding
 import com.leomarkpaway.movieapp.presentation.viewmodel.SharedViewModel
@@ -42,10 +40,7 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, SharedViewM
     private fun byteArrayToBitmap(fileName: String) =
         requireContext().openAsset(fileName).readBytes().convertByteArrayToBitmap()
 
-    private fun openUrlToBrowser(url: String) {
-        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
-        startActivity(browserIntent)
-    }
+    private fun openUrlToBrowser(url: String) { startActivity(url.createBrowserIntent()) }
 
     private fun onBackPress() {
         binding.imgBack.setOnClickListener { findNavController().popBackStack() }
