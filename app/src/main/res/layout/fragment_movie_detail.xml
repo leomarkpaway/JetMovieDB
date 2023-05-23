@@ -148,12 +148,12 @@
                         android:textSize="12sp"
                         app:backgroundTint="@android:color/darker_gray"
                         app:cornerRadius="20dp"
-                        app:layout_constraintBottom_toTopOf="@+id/button_watchTrailer"
+                        app:layout_constraintBottom_toTopOf="@+id/btn_watch_trailer"
                         app:layout_constraintStart_toStartOf="@+id/tv_movie_title"
                         app:layout_constraintTop_toBottomOf="@+id/tv_movie_title" />
 
                     <com.google.android.material.button.MaterialButton
-                        android:id="@+id/button_watchTrailer"
+                        android:id="@+id/btn_watch_trailer"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"

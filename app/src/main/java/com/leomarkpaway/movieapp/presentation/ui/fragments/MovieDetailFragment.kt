@@ -1,5 +1,7 @@
 package com.leomarkpaway.movieapp.presentation.ui.fragments
 
+import android.content.Intent
+import android.net.Uri
 import android.util.Log
 import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
@@ -34,10 +36,16 @@ class MovieDetailFragment : BaseFragment<FragmentMovieDetailBinding, SharedViewM
         tvShortDescription.text = movie.description
         tvMovieGenre.text = movie.genre
         tvMovieReleaseDate.text = formatDateFromMillis(movie.released_date_millis)
+        btnWatchTrailer.setOnClickListener { openUrlToBrowser(movie.trailer_link) }
     }
 
     private fun byteArrayToBitmap(fileName: String) =
         requireContext().openAsset(fileName).readBytes().convertByteArrayToBitmap()
+
+    private fun openUrlToBrowser(url: String) {
+        val browserIntent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        startActivity(browserIntent)
+    }
 
     private fun onBackPress() {
         binding.imgBack.setOnClickListener { findNavController().popBackStack() }
