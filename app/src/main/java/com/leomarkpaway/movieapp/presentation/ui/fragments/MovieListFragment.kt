@@ -49,11 +49,12 @@ class MovieListFragment : BaseFragment<FragmentMovieListBinding, SharedViewModel
     }
 
     private fun setupMovieAdapter(movieList : List<Movie>) = with(binding) {
-        rvMovies.adapter = MovieAdapter(movieList) { id -> onClick(id) }
+        rvMovies.adapter = MovieAdapter(movieList) { movie -> onClickMovie(movie) }
         rvMovies.layoutManager = LinearLayoutManager(requireContext())
     }
 
-    private fun onClick(id: Long?) {
+    private fun onClickMovie(movie: Movie) {
+        viewModel.setCurrentMovieSelected(movie)
         findNavController().navigate(R.id.action_movieDetail)
     }
 

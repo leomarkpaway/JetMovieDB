@@ -14,7 +14,7 @@ import com.leomarkpaway.movieapp.databinding.ItemMovieBinding
 
 class MovieAdapter(
     private val movies: List<Movie>,
-    private val onClickItem: (Long?) -> Unit
+    private val onClickItem: (Movie) -> Unit
 ) : RecyclerView.Adapter<MovieAdapter.MovieHolder>() {
 
     lateinit var context: Context
@@ -26,7 +26,7 @@ class MovieAdapter(
             tvShortDetail.text =
                 context.getString(R.string.short_movie_detail, item.duration, item.genre)
             image.setImageBitmap(byteArrayToBitmap(item.image))
-            root.setOnClickListener { onClickItem(item.id) }
+            root.setOnClickListener { onClickItem(item) }
         }
 
         private fun byteArrayToBitmap(fileName: String) =
