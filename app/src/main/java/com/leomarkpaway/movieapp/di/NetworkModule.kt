@@ -1,5 +1,7 @@
 package com.leomarkpaway.movieapp.di
 
+import com.leomarkpaway.movieapp.common.util.provideApi
+import com.leomarkpaway.movieapp.data.source.remote.service.ApiService
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -34,6 +36,9 @@ object NetworkModule {
         return httpLoggingInterceptor
     }
 
-    //TODO add remote service here
+    @Provides
+    fun provideMoviesApi(client: OkHttpClient): ApiService {
+        return provideApi("https://script.google.com/", client)
+    }
 
 }

@@ -94,4 +94,8 @@ dependencies {
     // Data store
     implementation data_store.preferences
 
+    // navigation
+    implementation navigation.fragment
+    implementation navigation.ui
+
 }

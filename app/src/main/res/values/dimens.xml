@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="spacing_siz_100">100dp</dimen>
+    <dimen name="spacing_size_150">150dp</dimen>
+    <dimen name="font_size_24">24sp</dimen>
+    <dimen name="font_size_18">18sp</dimen>
+    <dimen name="font_size_12">12sp</dimen>
+    <dimen name="spacing_size_14">14dp</dimen>
+    <dimen name="spacing_size_24">24dp</dimen>
+    <dimen name="spacing_size_6">6dp</dimen>
+    <dimen name="spacing_size_3">3dp</dimen>
+    <dimen name="spacing_size_0">0dp</dimen>
+</resources>
