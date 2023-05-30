@@ -3,6 +3,7 @@
 Description:
 - MVVM Clean Architecture
 - Repository Pattern
+- Hilt
 - Room Database
 - Data Store Preference
 - Navigation Component
