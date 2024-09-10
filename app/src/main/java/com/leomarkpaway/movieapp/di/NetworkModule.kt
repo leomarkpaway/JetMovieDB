@@ -1,39 +1,65 @@
 package com.leomarkpaway.movieapp.di
 
+import com.leomarkpaway.movieapp.BuildConfig
+import com.leomarkpaway.movieapp.data.source.remote.service.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.components.SingletonComponent
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
+import retrofit2.Retrofit
+import retrofit2.converter.gson.GsonConverterFactory
+import javax.inject.Singleton
 
 @Module
 @InstallIn(SingletonComponent::class)
 object NetworkModule {
 
-    @Provides
-    fun provideHttpClient(okHttpBuilder: OkHttpClient.Builder) = okHttpBuilder.build()
+    private const val BASE_URL = "https://api.themoviedb.org/3/"
 
     @Provides
-    fun provideHttpClientBuilder(
-        loggingInterceptor: HttpLoggingInterceptor
-    ): OkHttpClient.Builder {
-        return OkHttpClient.Builder().apply {
-            addInterceptor(loggingInterceptor)
+    @Singleton
+    fun provideInterceptor(): Interceptor {
+        return Interceptor { chain ->
+
+            val url = chain.request().url
+                .newBuilder()
+                .addQueryParameter("api_key",  BuildConfig.MOVIE_API_KEY)
+                .build()
+            val request = chain.request()
+                .newBuilder()
+                .url(url)
+                .build()
+
+            chain.proceed(request)
         }
     }
 
     @Provides
-    fun provideHttpLoggingInterceptor(): HttpLoggingInterceptor {
-        val httpLoggingInterceptor = HttpLoggingInterceptor()
-        httpLoggingInterceptor.level = if (true) {
-            HttpLoggingInterceptor.Level.BODY
-        } else {
-            HttpLoggingInterceptor.Level.NONE
-        }
-        return httpLoggingInterceptor
+    @Singleton
+    fun provideOkHttpClient(interceptor: Interceptor): OkHttpClient {
+        return OkHttpClient.Builder()
+            .addInterceptor(interceptor)
+            .addInterceptor(HttpLoggingInterceptor().setLevel(HttpLoggingInterceptor.Level.BODY))
+            .build()
     }
 
-    //TODO add remote service here
+    @Provides
+    @Singleton
+    fun provideRetrofit(okHttpClient: OkHttpClient): Retrofit {
+        return Retrofit.Builder()
+            .client(okHttpClient)
+            .baseUrl(BASE_URL)
+            .addConverterFactory(GsonConverterFactory.create())
+            .build()
+    }
+
+    @Provides
+    @Singleton
+    fun provideMovieApi(retrofit: Retrofit): MovieApi {
+        return retrofit.create(MovieApi::class.java)
+    }
 
 }

@@ -20,10 +20,16 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             MoviesDatabase::class.java,
-            "DataBaseName"
+            "movie_database.db"
         ).build()
     }
 
-    //TODO add provider DAO here
+    @Provides
+    @Singleton
+    fun provideMovieDao(moviesDatabase: MoviesDatabase) = moviesDatabase.moviesDao()
+
+    @Provides
+    @Singleton
+    fun provideGenreDao(moviesDatabase: MoviesDatabase) = moviesDatabase.genreDao()
 
 }
