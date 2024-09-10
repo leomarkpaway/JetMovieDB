@@ -1,7 +1,7 @@
 package com.leomarkpaway.movieapp.di
 
 import android.content.Context
-import com.leomarkpaway.movieapp.data.source.preference.PreferenceManager
+import com.leomarkpaway.movieapp.data.source.local.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

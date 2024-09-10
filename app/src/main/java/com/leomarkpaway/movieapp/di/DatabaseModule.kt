@@ -2,7 +2,7 @@ package com.leomarkpaway.movieapp.di
 
 import android.content.Context
 import androidx.room.Room
-import com.leomarkpaway.movieapp.data.source.local.database.AppDatabase
+import com.leomarkpaway.movieapp.data.source.local.database.MoviesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,10 +16,10 @@ object DatabaseModule {
 
     @Provides
     @Singleton
-    fun provideDatabase(@ApplicationContext appContext: Context): AppDatabase {
+    fun provideDatabase(@ApplicationContext appContext: Context): MoviesDatabase {
         return Room.databaseBuilder(
             appContext,
-            AppDatabase::class.java,
+            MoviesDatabase::class.java,
             "DataBaseName"
         ).build()
     }

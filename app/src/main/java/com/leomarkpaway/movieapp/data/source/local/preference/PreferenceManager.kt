@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.data.source.preference
+package com.leomarkpaway.movieapp.data.source.local.preference
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
