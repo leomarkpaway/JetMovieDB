@@ -25,15 +25,18 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import coil.annotation.ExperimentalCoilApi
 import com.leomarkpaway.movieapp.intents.HomeInteractionEvents
 import com.leomarkpaway.movieapp.ui.theme.MovieAppTheme
 import com.leomarkpaway.movieapp.ui.theme.graySurface
 import com.leomarkpaway.movieapp.view.home.screens.HomeScreen
 import com.leomarkpaway.movieapp.view.home.viewmodel.HomeViewModel
+import com.leomarkpaway.movieapp.view.movie_details.MovieDetailActivity
 import com.leomarkpaway.movieapp.view.trending.screens.TrendingScreen
 import com.leomarkpaway.movieapp.view.watchlist.screens.WatchlistScreen
 import dagger.hilt.android.AndroidEntryPoint
 
+@ExperimentalCoilApi
 @AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -79,7 +82,11 @@ class HomeActivity : ComponentActivity() {
     ) {
         when (interactionEvents) {
             is HomeInteractionEvents.OpenMovieDetail -> {
-                // TODO Start Activity MovieDetail
+                startActivity(
+                    MovieDetailActivity.newIntent(
+                        this, interactionEvents.movie, interactionEvents.imageId
+                    )
+                )
                 overridePendingTransition(0, 0)
             }
             is HomeInteractionEvents.AddToMyWatchlist -> {
