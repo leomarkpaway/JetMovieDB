@@ -37,7 +37,7 @@ fun TrendingScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit)
             .horizontalGradientBackground(surfaceGradient)
             .verticalScroll(rememberScrollState())
     ) {
-        // TODO Fix loading issue
+        // TODO Implement loading state
 //        if (showLoading.value) {
 //            CircularProgressIndicator(modifier = Modifier.align(Alignment.CenterHorizontally))
 //        }
