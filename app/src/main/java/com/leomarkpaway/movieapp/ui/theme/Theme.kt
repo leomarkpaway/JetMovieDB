@@ -134,7 +134,7 @@ fun MovieAppTheme(
     }
 
     MaterialTheme(
-        colors = colors,
+        colors = DarkGreenColorPalette,
         typography = typography,
         shapes = shapes,
         content = content
