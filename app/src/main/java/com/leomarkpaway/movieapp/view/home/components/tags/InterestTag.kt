@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.presentation.home.components.tags
+package com.leomarkpaway.movieapp.view.home.components.tags
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable

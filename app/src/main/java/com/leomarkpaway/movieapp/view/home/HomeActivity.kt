@@ -1,9 +1,8 @@
-package com.leomarkpaway.movieapp.presentation.ui
+package com.leomarkpaway.movieapp.view.home
 
 import android.content.Context
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
@@ -26,27 +25,23 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.leomarkpaway.movieapp.presentation.home.MovieHomeScreen
-import com.leomarkpaway.movieapp.presentation.home.intent.MoviesHomeInteractionEvents
-import com.leomarkpaway.movieapp.presentation.home.state.HomeState
-import com.leomarkpaway.movieapp.presentation.home.state.UIComponent
-import com.leomarkpaway.movieapp.presentation.viewmodel.MainActivityViewModel
 import com.leomarkpaway.movieapp.ui.theme.MovieAppTheme
 import com.leomarkpaway.movieapp.ui.theme.graySurface
+import com.leomarkpaway.movieapp.view.home.intents.HomeInteractionEvents
+import com.leomarkpaway.movieapp.view.home.screens.HomeScreen
+import com.leomarkpaway.movieapp.view.home.viewmodel.HomeViewModel
 import dagger.hilt.android.AndroidEntryPoint
-import org.orbitmvi.orbit.viewmodel.observe
 
 
 @AndroidEntryPoint
-class MainActivity : ComponentActivity() {
+class HomeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         window.addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
         setContent {
             MovieAppTheme {
                 val navType = rememberSaveable { mutableStateOf(MovieNavType.SHOWING) }
-                val viewModel: MainActivityViewModel = viewModel()
-                viewModel.observe(state = ::render, sideEffect = ::handleSideEffect, lifecycleOwner = this)
+                val viewModel: HomeViewModel = viewModel()
                 Scaffold(
                     bottomBar = { MoviesBottomBar(navType) }
                 ) {
@@ -55,7 +50,7 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.padding(it),
                     ) { navTypeState ->
                         when (navTypeState.value) {
-                            MovieNavType.SHOWING -> MovieHomeScreen(
+                            MovieNavType.SHOWING -> HomeScreen(
                                 moviesHomeInteractionEvents = { event ->
                                     handleInteractionEvents(event, viewModel)
                                 }
@@ -68,27 +63,19 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-    private fun render(state: HomeState) {
-        Log.d("render", "state $state")
-    }
-
-    private fun handleSideEffect(sideEffect: UIComponent) {
-        Log.d("handleSideEffect", "sideEffect $sideEffect")
-    }
-
     private fun handleInteractionEvents(
-        interactionEvents: MoviesHomeInteractionEvents,
-        viewModel: MainActivityViewModel
+        interactionEvents: HomeInteractionEvents,
+        viewModel: HomeViewModel
     ) {
         when (interactionEvents) {
-            is MoviesHomeInteractionEvents.OpenMovieDetail -> {
+            is HomeInteractionEvents.OpenMovieDetail -> {
                 // TODO Start Activity MovieDetail
                 overridePendingTransition(0, 0)
             }
-            is MoviesHomeInteractionEvents.AddToMyWatchlist -> {
+            is HomeInteractionEvents.AddToMyWatchlist -> {
                 viewModel.addToMyWatchlist(interactionEvents.movie)
             }
-            is MoviesHomeInteractionEvents.RemoveFromMyWatchlist -> {
+            is HomeInteractionEvents.RemoveFromMyWatchlist -> {
                 viewModel.removeFromMyWatchlist(interactionEvents.movie)
             }
         }
@@ -97,7 +84,7 @@ class MainActivity : ComponentActivity() {
     companion object {
         private const val DARK_THEME = "darkTheme"
         fun newIntent(context: Context, isDarkTheme: Boolean) =
-            Intent(context, MainActivity::class.java).apply {
+            Intent(context, HomeActivity::class.java).apply {
                 putExtra(DARK_THEME, isDarkTheme)
             }
     }

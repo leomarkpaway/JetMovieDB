@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.presentation.home
+package com.leomarkpaway.movieapp.view.home.screens
 
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -20,18 +20,18 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.leomarkpaway.movieapp.R
-import com.leomarkpaway.movieapp.presentation.home.components.pager.MoviesPager
-import com.leomarkpaway.movieapp.presentation.home.intent.MoviesHomeInteractionEvents
 import com.leomarkpaway.movieapp.ui.theme.extension.generateDominantColorState
 import com.leomarkpaway.movieapp.ui.theme.modifiers.verticalGradientBackground
+import com.leomarkpaway.movieapp.view.home.components.pager.MoviesPager
+import com.leomarkpaway.movieapp.view.home.intents.HomeInteractionEvents
 
 @Composable
-fun MovieHomeScreen(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
-    MovieHomeScreenContent(moviesHomeInteractionEvents)
+fun HomeScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
+    HomeScreenContent(moviesHomeInteractionEvents)
 }
 
 @Composable
-fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit) {
+fun HomeScreenContent(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
     val imageId = remember { mutableStateOf(R.drawable.camelia) }
     val context = LocalContext.current
     val defaultBitmap =

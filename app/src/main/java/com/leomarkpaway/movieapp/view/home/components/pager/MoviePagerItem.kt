@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.presentation.home.components.pager
+package com.leomarkpaway.movieapp.view.home.components.pager
 
 import androidx.compose.animation.core.animateDpAsState
 import androidx.compose.animation.core.animateFloatAsState
@@ -36,7 +36,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.leomarkpaway.movieapp.data.source.remote.entity.Genre
 import com.leomarkpaway.movieapp.data.source.remote.entity.Movie
-import com.leomarkpaway.movieapp.presentation.home.components.tags.InterestTag
+import com.leomarkpaway.movieapp.view.home.components.tags.InterestTag
 import kotlin.math.abs
 import kotlin.math.min
 

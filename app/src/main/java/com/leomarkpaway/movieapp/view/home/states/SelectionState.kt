@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.presentation.home.state
+package com.leomarkpaway.movieapp.view.home.states
 
 enum class SelectionState {
     Selected,

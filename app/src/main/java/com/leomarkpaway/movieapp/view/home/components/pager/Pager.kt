@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.presentation.home.components.pager
+package com.leomarkpaway.movieapp.view.home.components.pager
 
 import androidx.compose.foundation.gestures.Orientation
 import androidx.compose.foundation.gestures.draggable
@@ -14,7 +14,7 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.layout.Layout
 import androidx.compose.ui.layout.Measurable
-import com.leomarkpaway.movieapp.presentation.home.state.SelectionState
+import com.leomarkpaway.movieapp.view.home.states.SelectionState
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 import kotlin.math.roundToInt

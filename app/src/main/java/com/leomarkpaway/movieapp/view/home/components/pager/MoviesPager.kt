@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.presentation.home.components.pager
+package com.leomarkpaway.movieapp.view.home.components.pager
 
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
@@ -14,16 +14,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.leomarkpaway.movieapp.R
-import com.leomarkpaway.movieapp.presentation.home.intent.MoviesHomeInteractionEvents
-import com.leomarkpaway.movieapp.presentation.viewmodel.MainActivityViewModel
+import com.leomarkpaway.movieapp.view.home.intents.HomeInteractionEvents
+import com.leomarkpaway.movieapp.view.home.viewmodel.HomeViewModel
 import kotlin.math.abs
 
 @Composable
 fun MoviesPager(
     imageId: MutableState<Int>,
-    moviesHomeInteractionEvents: (MoviesHomeInteractionEvents) -> Unit
+    moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit
 ) {
-    val viewModel: MainActivityViewModel = viewModel()
+    val viewModel: HomeViewModel = viewModel()
 
     val movies by viewModel.nowShowingLiveData.observeAsState(emptyList())
     val genres by viewModel.genresLiveData.observeAsState(emptyList())
@@ -46,10 +46,10 @@ fun MoviesPager(
                 genres,
                 isSelected,
                 filteredOffset,
-                { moviesHomeInteractionEvents(MoviesHomeInteractionEvents.AddToMyWatchlist(movie)) }
+                { moviesHomeInteractionEvents(HomeInteractionEvents.AddToMyWatchlist(movie)) }
             ) {
                 moviesHomeInteractionEvents(
-                    MoviesHomeInteractionEvents.OpenMovieDetail(movie, imageId.value)
+                    HomeInteractionEvents.OpenMovieDetail(movie, imageId.value)
                 )
             }
         }

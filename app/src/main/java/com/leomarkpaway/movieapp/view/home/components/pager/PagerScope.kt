@@ -1,6 +1,6 @@
-package com.leomarkpaway.movieapp.presentation.home.components.pager
+package com.leomarkpaway.movieapp.view.home.components.pager
 
-import com.leomarkpaway.movieapp.presentation.home.state.SelectionState
+import com.leomarkpaway.movieapp.view.home.states.SelectionState
 
 class PagerScope(
     private val state: PagerState,

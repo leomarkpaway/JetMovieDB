@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.presentation.home.components.pager
+package com.leomarkpaway.movieapp.view.home.components.pager
 
 import androidx.compose.runtime.Immutable
 import androidx.compose.ui.layout.ParentDataModifier
