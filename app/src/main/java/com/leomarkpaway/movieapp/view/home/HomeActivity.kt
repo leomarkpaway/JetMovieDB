@@ -31,6 +31,7 @@ import com.leomarkpaway.movieapp.ui.theme.graySurface
 import com.leomarkpaway.movieapp.view.home.screens.HomeScreen
 import com.leomarkpaway.movieapp.view.home.viewmodel.HomeViewModel
 import com.leomarkpaway.movieapp.view.trending.screens.TrendingScreen
+import com.leomarkpaway.movieapp.view.watchlist.screens.WatchlistScreen
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -60,7 +61,11 @@ class HomeActivity : ComponentActivity() {
                                     handleInteractionEvents(event, viewModel)
                                 }
                             )
-                            else -> { /*TODO implement other screen*/}
+                            MovieNavType.WATCHLIST -> WatchlistScreen(
+                                moviesHomeInteractionEvents = { event ->
+                                    handleInteractionEvents(event, viewModel)
+                                }
+                            )
                         }
                     }
                 }
