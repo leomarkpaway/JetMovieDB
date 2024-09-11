@@ -23,7 +23,7 @@ import com.leomarkpaway.movieapp.R
 import com.leomarkpaway.movieapp.ui.theme.extension.generateDominantColorState
 import com.leomarkpaway.movieapp.ui.theme.modifiers.verticalGradientBackground
 import com.leomarkpaway.movieapp.view.home.components.pager.MoviesPager
-import com.leomarkpaway.movieapp.view.home.intents.HomeInteractionEvents
+import com.leomarkpaway.movieapp.intents.HomeInteractionEvents
 
 @Composable
 fun HomeScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {

@@ -14,7 +14,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.leomarkpaway.movieapp.R
-import com.leomarkpaway.movieapp.view.home.intents.HomeInteractionEvents
+import com.leomarkpaway.movieapp.intents.HomeInteractionEvents
 import com.leomarkpaway.movieapp.view.home.viewmodel.HomeViewModel
 import kotlin.math.abs
 
