@@ -52,6 +52,8 @@ dependencies {
     // Common
     implementation androidx.core_ktx
     implementation androidx.appcompat
+    implementation "androidx.lifecycle:lifecycle-livedata-ktx:2.6.1"
+    implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
 
     // Common test junit
     testImplementation junit_test.junit
@@ -80,7 +82,7 @@ dependencies {
     implementation navigation.ui
 
     // coil image loader
-    implementation coil.io
+//    implementation coil.io
 
     // Retrofit
     implementation retrofitDependencies.retrofit
@@ -99,5 +101,20 @@ dependencies {
 
     // Data store
     implementation data_store.preferences
+
+    // Compose
+    implementation "androidx.compose.material:material:1.4.1"
+    implementation "androidx.compose.compiler:compiler:1.4.1"
+    implementation "androidx.compose.ui:ui-tooling-preview:1.4.1"
+    implementation 'androidx.activity:activity-compose:1.7.0'
+    implementation 'androidx.palette:palette-ktx:1.0.0'
+    debugImplementation "androidx.compose.ui:ui-tooling:1.4.1"
+    implementation "androidx.compose.material:material-icons-extended:1.2.1"
+    implementation "androidx.lifecycle:lifecycle-viewmodel-compose:2.5.1"
+    implementation "io.coil-kt:coil-compose:1.4.0"
+    implementation "androidx.compose.runtime:runtime-livedata:1.4.1"
+
+    // Orbit MVI
+    implementation "org.orbit-mvi:orbit-viewmodel:4.5.0"
 
 }
