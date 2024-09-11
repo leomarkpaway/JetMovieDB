@@ -1,8 +1,6 @@
 package com.leomarkpaway.movieapp.view.home.components.pager
 
 import androidx.compose.animation.core.animateDpAsState
-import androidx.compose.animation.core.animateFloatAsState
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -15,19 +13,12 @@ import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.Button
 import androidx.compose.material.Card
 import androidx.compose.material.ExperimentalMaterialApi
-import androidx.compose.material.Icon
-import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.MaterialTheme.typography
 import androidx.compose.material.Text
-import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.LibraryAdd
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
@@ -100,28 +91,11 @@ fun MoviePagerItem(
                 verticalAlignment = Alignment.CenterVertically,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                val clicked = remember { mutableStateOf(false) }
                 Text(
                     text = movie.title,
                     modifier = Modifier.padding(8.dp),
                     style = typography.h6
                 )
-                IconButton(onClick = {
-                    addToWatchList.invoke()
-                    clicked.value = !clicked.value
-                }) {
-                    Icon(
-                        imageVector = Icons.Default.LibraryAdd,
-                        tint = MaterialTheme.colors.primary,
-                        contentDescription = null,
-                        modifier = Modifier
-                            .graphicsLayer(
-                                rotationY = animateFloatAsState(
-                                    if (clicked.value) 720f else 0f, tween(400)
-                                ).value
-                            )
-                    )
-                }
             }
             Row {
                 movieGenres?.forEach {
@@ -148,8 +122,8 @@ fun MoviePagerItem(
                     .weight(1f),
                 style = typography.subtitle2
             )
-            Button(onClick = {}, modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Get Tickets", modifier = Modifier.padding(8.dp))
+            Button(onClick = { addToWatchList.invoke() }, modifier = Modifier.fillMaxWidth()) {
+                Text(text = "Add to Watchlist", modifier = Modifier.padding(8.dp))
             }
         }
     }
