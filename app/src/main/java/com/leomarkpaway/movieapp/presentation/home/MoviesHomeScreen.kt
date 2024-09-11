@@ -20,6 +20,7 @@ import androidx.compose.ui.res.imageResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.leomarkpaway.movieapp.R
+import com.leomarkpaway.movieapp.presentation.home.components.pager.MoviesPager
 import com.leomarkpaway.movieapp.presentation.home.intent.MoviesHomeInteractionEvents
 import com.leomarkpaway.movieapp.ui.theme.extension.generateDominantColorState
 import com.leomarkpaway.movieapp.ui.theme.modifiers.verticalGradientBackground
@@ -53,6 +54,6 @@ fun MovieHomeScreenContent(moviesHomeInteractionEvents: (MoviesHomeInteractionEv
                 modifier = Modifier.padding(16.dp)
             )
         }
-        // TODO Implement movie pager here
+        item { MoviesPager(imageId, moviesHomeInteractionEvents) }
     }
 }

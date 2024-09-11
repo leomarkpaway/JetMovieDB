@@ -60,17 +60,7 @@ class MainActivity : ComponentActivity() {
                                     handleInteractionEvents(event, viewModel)
                                 }
                             )
-//                            MovieNavType.TRENDING -> MovieTrendingScreen(
-//                                moviesHomeInteractionEvents = { event ->
-//                                    handleInteractionEvents(event, viewModel)
-//                                }
-//                            )
-//                            MovieNavType.WATCHLIST -> WatchlistScreen(
-//                                moviesHomeInteractionEvents = { event ->
-//                                    handleInteractionEvents(event, viewModel)
-//                                }
-//                            )
-                            else -> {}
+                            else -> { /*TODO implement other screen*/}
                         }
                     }
                 }
@@ -92,11 +82,7 @@ class MainActivity : ComponentActivity() {
     ) {
         when (interactionEvents) {
             is MoviesHomeInteractionEvents.OpenMovieDetail -> {
-//                startActivity(
-//                    MovieDetailActivity.newIntent(
-//                        this, interactionEvents.movie, interactionEvents.imageId
-//                    )
-//                )
+                // TODO Start Activity MovieDetail
                 overridePendingTransition(0, 0)
             }
             is MoviesHomeInteractionEvents.AddToMyWatchlist -> {

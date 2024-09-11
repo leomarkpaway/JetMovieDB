@@ -1,5 +1,6 @@
 package com.leomarkpaway.movieapp.presentation.viewmodel
 
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.liveData
 import androidx.lifecycle.viewModelScope
@@ -24,30 +25,8 @@ class MainActivityViewModel @Inject constructor(
 
     override val container = container<HomeState, UIComponent>(HomeState())
 
-//    intent {
-//        val posts = repository.getPosts()
-//        posts.onEach { responseState ->
-//            when (responseState) {
-//                is ResponseState.Loading -> {
-//                    reduce { state.copy(progressbar = responseState.isLoading) }
-//                }
-//                is ResponseState.Success -> {
-//                    reduce { state.copy(posts = responseState.data) }
-//                }
-//                is ResponseState.Error -> {
-//                    when (responseState.uiComponent) {
-//                        is UIComponent.Toast -> {
-//                            postSideEffect(UIComponent.Toast(responseState.uiComponent.text))
-//                        }
-//                        else -> { postSideEffect(UIComponent.Toast("unknown error"))}
-//                    }
-//                }
-//            }
-//        }.launchIn(viewModelScope)
-//    }
-
-//    val nowShowingLiveData = MutableLiveData<List<Movie>>()
-//    val errorLiveData = MutableLiveData<String>()
+    val nowShowingLiveData = MutableLiveData<List<Movie>>()
+    val errorLiveData = MutableLiveData<String>()
 
     //live data to read room database
     val genresLiveData = liveData(Dispatchers.IO) {
@@ -58,6 +37,7 @@ class MainActivityViewModel @Inject constructor(
     }
 
     init {
+        // TODO use intent
         intent {
             val nowShowingMovies = movieRepository.getNowShowing()
             nowShowingMovies.collectLatest { movies ->
@@ -70,9 +50,9 @@ class MainActivityViewModel @Inject constructor(
         viewModelScope.launch {
             movieRepository.getNowShowing().collect { movies ->
                     if (movies.isNotEmpty()) {
-//                        nowShowingLiveData.value = movies
+                        nowShowingLiveData.value = movies
                     } else {
-//                        errorLiveData.value = "Failed to load movies"
+                        errorLiveData.value = "Failed to load movies"
                     }
                 }
             movieRepository.fetchAndSaveGenresToDatabase().collect { }
