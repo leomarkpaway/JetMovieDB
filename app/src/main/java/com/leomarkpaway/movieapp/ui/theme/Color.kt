@@ -33,3 +33,6 @@ val gradientGreenColors = listOf(green200, green500, green700)
 val gradientRedColors = listOf(orange, tiktokRed)
 val gradientBluePurple = listOf(blue, purple)
 val instagramGradient = listOf(blue, purple, orange, yellow)
+
+fun moviesSurfaceGradient(isDark: Boolean) =
+    if (isDark) listOf(graySurface, Color.Black) else listOf(Color.White, Color.LightGray)

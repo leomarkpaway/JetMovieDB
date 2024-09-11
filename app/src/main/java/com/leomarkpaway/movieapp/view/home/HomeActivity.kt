@@ -25,13 +25,13 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.leomarkpaway.movieapp.intents.HomeInteractionEvents
 import com.leomarkpaway.movieapp.ui.theme.MovieAppTheme
 import com.leomarkpaway.movieapp.ui.theme.graySurface
-import com.leomarkpaway.movieapp.view.home.intents.HomeInteractionEvents
 import com.leomarkpaway.movieapp.view.home.screens.HomeScreen
 import com.leomarkpaway.movieapp.view.home.viewmodel.HomeViewModel
+import com.leomarkpaway.movieapp.view.trending.screens.TrendingScreen
 import dagger.hilt.android.AndroidEntryPoint
-
 
 @AndroidEntryPoint
 class HomeActivity : ComponentActivity() {
@@ -51,6 +51,11 @@ class HomeActivity : ComponentActivity() {
                     ) { navTypeState ->
                         when (navTypeState.value) {
                             MovieNavType.SHOWING -> HomeScreen(
+                                moviesHomeInteractionEvents = { event ->
+                                    handleInteractionEvents(event, viewModel)
+                                }
+                            )
+                            MovieNavType.TRENDING -> TrendingScreen(
                                 moviesHomeInteractionEvents = { event ->
                                     handleInteractionEvents(event, viewModel)
                                 }

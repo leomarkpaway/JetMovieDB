@@ -1,4 +1,4 @@
-package com.leomarkpaway.movieapp.view.home.intents
+package com.leomarkpaway.movieapp.intents
 
 import com.leomarkpaway.movieapp.data.source.remote.entity.Movie
 
