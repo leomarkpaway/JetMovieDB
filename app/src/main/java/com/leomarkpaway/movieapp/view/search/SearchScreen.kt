@@ -1,10 +1,8 @@
 package com.leomarkpaway.movieapp.view.search
 
-import android.util.Log
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -19,6 +17,7 @@ import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
+import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
@@ -34,24 +33,25 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.compose.rememberImagePainter
 import com.leomarkpaway.movieapp.intents.HomeInteractionEvents
+import com.leomarkpaway.movieapp.ui.theme.graySurface
 import com.leomarkpaway.movieapp.ui.theme.modifiers.horizontalGradientBackground
-import com.leomarkpaway.movieapp.ui.theme.moviesSurfaceGradient
 import com.leomarkpaway.movieapp.view.search.viewmodel.SearchViewModel
 
 @Composable
 fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
     val viewModel: SearchViewModel = viewModel()
-    val surfaceGradient = moviesSurfaceGradient(isSystemInDarkTheme())
+    val surfaceGradient = listOf(graySurface, Color.Black)
     val searchResults by viewModel.searchResults.collectAsState()
     val isLoading by viewModel.isLoading.collectAsState()
+    var query by remember { mutableStateOf("") }
+    if (query.isEmpty()) viewModel.resetSearchResults()
 
     Surface(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-        var query by remember { mutableStateOf("") }
-
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -62,7 +62,6 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
                 value = query,
                 onValueChange = { newQuery ->
                     query = newQuery
-                    Log.d("qwe", "newQuery $newQuery")
                     viewModel.search(newQuery)
                 },
                 modifier = Modifier
@@ -79,6 +78,15 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
                     disabledIndicatorColor = Color.Transparent
                 )
             )
+            if (searchResults.isEmpty() && query.isNotEmpty() && !isLoading) {
+                Spacer(modifier = Modifier.padding(100.dp))
+                Text(
+                    text = "No Result Found",
+                    style = MaterialTheme.typography.h6,
+                    modifier = Modifier.fillMaxWidth(),
+                    textAlign = TextAlign.Center
+                )
+            }
             Spacer(modifier = Modifier.height(16.dp))
             if (isLoading) {
                 Box(

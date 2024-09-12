@@ -36,4 +36,7 @@ class SearchViewModel @Inject constructor(
                 }
         }
     }
+
+    fun resetSearchResults() = viewModelScope.launch { _searchResults.emit(emptyList()) }
+
 }
