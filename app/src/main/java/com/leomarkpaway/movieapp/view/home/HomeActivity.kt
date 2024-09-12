@@ -18,6 +18,7 @@ import androidx.compose.material.Text
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.outlined.LibraryAdd
 import androidx.compose.material.icons.outlined.MovieCreation
+import androidx.compose.material.icons.outlined.Search
 import androidx.compose.material.icons.outlined.Subscriptions
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.MutableState
@@ -32,6 +33,7 @@ import com.leomarkpaway.movieapp.ui.theme.graySurface
 import com.leomarkpaway.movieapp.view.home.screens.HomeScreen
 import com.leomarkpaway.movieapp.view.home.viewmodel.HomeViewModel
 import com.leomarkpaway.movieapp.view.movie_details.MovieDetailActivity
+import com.leomarkpaway.movieapp.view.search.SearchScreen
 import com.leomarkpaway.movieapp.view.trending.screens.TrendingScreen
 import com.leomarkpaway.movieapp.view.watchlist.screens.WatchlistScreen
 import dagger.hilt.android.AndroidEntryPoint
@@ -65,6 +67,11 @@ class HomeActivity : ComponentActivity() {
                                 }
                             )
                             MovieNavType.WATCHLIST -> WatchlistScreen(
+                                moviesHomeInteractionEvents = { event ->
+                                    handleInteractionEvents(event, viewModel)
+                                }
+                            )
+                            MovieNavType.SEARCH -> SearchScreen(
                                 moviesHomeInteractionEvents = { event ->
                                     handleInteractionEvents(event, viewModel)
                                 }
@@ -130,9 +137,15 @@ fun MoviesBottomBar(navType: MutableState<MovieNavType>) {
             onClick = { navType.value = MovieNavType.WATCHLIST },
             label = { Text(text = "Watchlist") }
         )
+        BottomNavigationItem(
+            icon = { Icon(imageVector = Icons.Outlined.Search, contentDescription = null) },
+            selected = navType.value == MovieNavType.SEARCH,
+            onClick = { navType.value = MovieNavType.SEARCH },
+            label = { Text(text = "Search") }
+        )
     }
 }
 
 enum class MovieNavType {
-    SHOWING, TRENDING, WATCHLIST
+    SHOWING, TRENDING, WATCHLIST,SEARCH
 }
