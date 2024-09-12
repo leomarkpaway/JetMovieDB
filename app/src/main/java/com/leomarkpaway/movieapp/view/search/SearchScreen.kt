@@ -22,16 +22,22 @@ import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.ExperimentalComposeUiApi
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.platform.LocalFocusManager
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
@@ -41,6 +47,7 @@ import com.leomarkpaway.movieapp.ui.theme.graySurface
 import com.leomarkpaway.movieapp.ui.theme.modifiers.horizontalGradientBackground
 import com.leomarkpaway.movieapp.view.search.viewmodel.SearchViewModel
 
+@OptIn(ExperimentalComposeUiApi::class)
 @Composable
 fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
     val viewModel: SearchViewModel = viewModel()
@@ -49,6 +56,15 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
     val isLoading by viewModel.isLoading.collectAsState()
     var query by remember { mutableStateOf("") }
     if (query.isEmpty()) viewModel.resetSearchResults()
+
+    val focusRequester = remember { FocusRequester() }
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusManager = LocalFocusManager.current
+
+    LaunchedEffect(Unit) {
+        focusRequester.requestFocus()
+        keyboardController?.show()
+    }
 
     Column(
         modifier = Modifier
@@ -65,7 +81,8 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
             modifier = Modifier
                 .fillMaxWidth()
                 .padding(horizontal = 16.dp)
-                .background(Color.White, shape = RoundedCornerShape(24.dp)),
+                .background(Color.White, shape = RoundedCornerShape(24.dp))
+                .focusRequester(focusRequester), // Apply focusRequester,
             placeholder = { Text(color = Color.LightGray, text = "Search") },
             shape = RoundedCornerShape(24.dp),
             singleLine = true,
