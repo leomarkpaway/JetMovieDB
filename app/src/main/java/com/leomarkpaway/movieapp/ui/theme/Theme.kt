@@ -15,7 +15,7 @@ import com.leomarkpaway.movieapp.ui.theme.ColorPallet.PURPLE
 
 // dark palettes
 private val DarkGreenColorPalette = darkColors(
-    primary = green200,
+    primary = green500,
     primaryVariant = green700,
     secondary = teal200,
     background = Color.Black,

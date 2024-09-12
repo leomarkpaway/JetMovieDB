@@ -27,6 +27,7 @@ import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
 import com.leomarkpaway.movieapp.data.source.remote.entity.Genre
 import com.leomarkpaway.movieapp.data.source.remote.entity.Movie
+import com.leomarkpaway.movieapp.ui.theme.white
 import com.leomarkpaway.movieapp.view.home.components.tags.InterestTag
 import kotlin.math.abs
 import kotlin.math.min
@@ -123,7 +124,7 @@ fun MoviePagerItem(
                 style = typography.subtitle2
             )
             Button(onClick = { addToWatchList.invoke() }, modifier = Modifier.fillMaxWidth()) {
-                Text(text = "Add to Watchlist", modifier = Modifier.padding(8.dp))
+                Text(text = "Add to Watchlist", color = white, modifier = Modifier.padding(8.dp))
             }
         }
     }
