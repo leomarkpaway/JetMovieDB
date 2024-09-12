@@ -55,7 +55,7 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
             .fillMaxSize()
             .horizontalGradientBackground(surfaceGradient)
     ) {
-        Spacer(modifier = Modifier.padding(10.dp))
+        Spacer(modifier = Modifier.padding(20.dp))
         TextField(
             value = query,
             onValueChange = { newQuery ->
@@ -64,7 +64,7 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
             },
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(16.dp)
+                .padding(horizontal = 16.dp)
                 .background(Color.White, shape = RoundedCornerShape(24.dp)),
             placeholder = { Text(color = Color.LightGray, text = "Search") },
             shape = RoundedCornerShape(24.dp),
@@ -86,7 +86,6 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
                 textAlign = TextAlign.Center
             )
         }
-        Spacer(modifier = Modifier.height(16.dp))
         if (isLoading) {
             Box(
                 modifier = Modifier
@@ -115,7 +114,7 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
                         modifier = Modifier
                             .width(200.dp)
                             .height(300.dp)
-                            .padding(12.dp)
+                            .padding(6.dp)
                             .clip(RoundedCornerShape(12.dp))
                             .clickable(onClick = {
                                 moviesHomeInteractionEvents(
