@@ -1,6 +1,7 @@
 package com.leomarkpaway.movieapp.data.repository
 
 import androidx.lifecycle.LiveData
+import com.leomarkpaway.movieapp.BuildConfig
 import com.leomarkpaway.movieapp.data.source.local.database.MoviesDatabase
 import com.leomarkpaway.movieapp.data.source.local.database.daos.GenreDao
 import com.leomarkpaway.movieapp.data.source.local.database.daos.MoviesDao
@@ -132,6 +133,17 @@ class MovieRepositoryImpl(
 
     }.catch {
         emit(emptyList<Movie>())
+    }.flowOn(Dispatchers.Default)
+
+    override suspend fun searchMovie(query: String): Flow<List<Movie>> = flow {
+        val response = movieApi.searchMovies(query = query, apiKey = BuildConfig.MOVIE_API_KEY)
+        if (response.isSuccessful) {
+            emit(response.body()?.movies ?: emptyList())
+        } else {
+            emit(emptyList())
+        }
+    }.catch {
+        emit(emptyList())
     }.flowOn(Dispatchers.Default)
 
 }

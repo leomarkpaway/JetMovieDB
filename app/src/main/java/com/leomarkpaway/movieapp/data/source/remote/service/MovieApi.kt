@@ -37,4 +37,10 @@ interface MovieApi {
     @GET("genre/movie/list?")
     suspend fun getGenres(): Response<GenreApiResponse>
 
+    @GET("search/movie")
+    suspend fun searchMovies(
+        @Query("query") query: String,
+        @Query("api_key") apiKey: String
+    ): Response<MovieListResponse>
+
 }

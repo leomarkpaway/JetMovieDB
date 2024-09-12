@@ -18,4 +18,5 @@ interface MovieRepository {
     suspend fun getTopRatedMovies(): Flow<List<Movie>>
     suspend fun getTopRatedTVShwos(): Flow<List<Movie>>
     suspend fun getTrendingTVShows(): Flow<List<Movie>>
+    suspend fun searchMovie(query: String): Flow<List<Movie>>
 }
