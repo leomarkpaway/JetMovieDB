@@ -10,11 +10,11 @@ plugins {
 apply from: "dependencies.gradle"
 
 android {
-    namespace 'com.leomarkpaway.movieapp'
+    namespace 'com.leomarkpaway.jetmoviedb'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.leomarkpaway.movieapp"
+        applicationId "com.leomarkpaway.jetmoviedb"
         minSdk 24
         targetSdk 33
         versionCode 1
