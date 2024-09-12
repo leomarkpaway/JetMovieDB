@@ -16,4 +16,5 @@ JetMovieDB is a sleek and dynamic movie discovery app built using Jetpack Compos
 <img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Now%20showing.png" alt="screenshot" height="480"/>
 <img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Trending.png" alt="screenshot" height="480"/>
 <img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Watchlist.png" alt="screenshot" height="480"/>
+<img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Search.png" alt="screenshot" height="480"/>
 <img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Details.png" alt="screenshot" height="480"/>
