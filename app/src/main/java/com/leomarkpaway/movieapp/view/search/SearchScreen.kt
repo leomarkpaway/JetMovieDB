@@ -18,7 +18,6 @@ import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.material.TextField
 import androidx.compose.material.TextFieldDefaults
@@ -51,81 +50,80 @@ fun SearchScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
     var query by remember { mutableStateOf("") }
     if (query.isEmpty()) viewModel.resetSearchResults()
 
-    Surface(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
-        Column(
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .horizontalGradientBackground(surfaceGradient)
+    ) {
+        Spacer(modifier = Modifier.padding(10.dp))
+        TextField(
+            value = query,
+            onValueChange = { newQuery ->
+                query = newQuery
+                viewModel.search(newQuery)
+            },
             modifier = Modifier
-                .fillMaxSize()
+                .fillMaxWidth()
                 .padding(16.dp)
-        ) {
-            Spacer(modifier = Modifier.padding(10.dp))
-            TextField(
-                value = query,
-                onValueChange = { newQuery ->
-                    query = newQuery
-                    viewModel.search(newQuery)
-                },
-                modifier = Modifier
-                    .fillMaxWidth()
-                    .background(Color.White, shape = RoundedCornerShape(24.dp)),
-                placeholder = { Text(color = Color.LightGray, text = "Search") },
-                shape = RoundedCornerShape(24.dp),
-                singleLine = true,
-                colors = TextFieldDefaults.textFieldColors(
-                    textColor = Color.Black,
-                    backgroundColor = Color.Transparent,
-                    focusedIndicatorColor = Color.Transparent,
-                    unfocusedIndicatorColor = Color.Transparent,
-                    disabledIndicatorColor = Color.Transparent
-                )
+                .background(Color.White, shape = RoundedCornerShape(24.dp)),
+            placeholder = { Text(color = Color.LightGray, text = "Search") },
+            shape = RoundedCornerShape(24.dp),
+            singleLine = true,
+            colors = TextFieldDefaults.textFieldColors(
+                textColor = Color.Black,
+                backgroundColor = Color.Transparent,
+                focusedIndicatorColor = Color.Transparent,
+                unfocusedIndicatorColor = Color.Transparent,
+                disabledIndicatorColor = Color.Transparent
             )
-            if (searchResults.isEmpty() && query.isNotEmpty() && !isLoading) {
-                Spacer(modifier = Modifier.padding(100.dp))
-                Text(
-                    text = "No Result Found",
-                    style = MaterialTheme.typography.h6,
-                    modifier = Modifier.fillMaxWidth(),
-                    textAlign = TextAlign.Center
+        )
+        if (searchResults.isEmpty() && query.isNotEmpty() && !isLoading) {
+            Spacer(modifier = Modifier.padding(100.dp))
+            Text(
+                text = "No Result Found",
+                style = MaterialTheme.typography.h6,
+                modifier = Modifier.fillMaxWidth(),
+                textAlign = TextAlign.Center
+            )
+        }
+        Spacer(modifier = Modifier.height(16.dp))
+        if (isLoading) {
+            Box(
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(16.dp),
+                contentAlignment = Alignment.Center
+            ) {
+                CircularProgressIndicator(
+                    modifier = Modifier.size(32.dp)
                 )
             }
-            Spacer(modifier = Modifier.height(16.dp))
-            if (isLoading) {
-                Box(
-                    modifier = Modifier
-                        .fillMaxSize()
-                        .padding(16.dp),
-                    contentAlignment = Alignment.Center
-                ) {
-                    CircularProgressIndicator(
-                        modifier = Modifier.size(32.dp)
+        } else {
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                verticalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                modifier = Modifier.padding(16.dp)
+            ) {
+                items(searchResults.size) { index ->
+                    val movie = searchResults[index]
+                    Image(
+                        painter = rememberImagePainter(
+                            data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
+                        ),
+                        contentDescription = null,
+                        modifier = Modifier
+                            .width(200.dp)
+                            .height(300.dp)
+                            .padding(12.dp)
+                            .clip(RoundedCornerShape(12.dp))
+                            .clickable(onClick = {
+                                moviesHomeInteractionEvents(
+                                    HomeInteractionEvents.OpenMovieDetail(movie)
+                                )
+                            }),
+                        contentScale = ContentScale.Crop
                     )
-                }
-            } else {
-                LazyVerticalGrid(
-                    columns = GridCells.Fixed(2),
-                    verticalArrangement = Arrangement.spacedBy(16.dp),
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                    modifier = Modifier.padding(16.dp)
-                ) {
-                    items(searchResults.size) { index ->
-                        val movie = searchResults[index]
-                        Image(
-                            painter = rememberImagePainter(
-                                data = "https://image.tmdb.org/t/p/w500/${movie.poster_path}"
-                            ),
-                            contentDescription = null,
-                            modifier = Modifier
-                                .width(200.dp)
-                                .height(300.dp)
-                                .padding(12.dp)
-                                .clip(RoundedCornerShape(12.dp))
-                                .clickable(onClick = {
-                                    moviesHomeInteractionEvents(
-                                        HomeInteractionEvents.OpenMovieDetail(movie)
-                                    )
-                                }),
-                            contentScale = ContentScale.Crop
-                        )
-                    }
                 }
             }
         }

@@ -3,12 +3,12 @@ package com.leomarkpaway.movieapp.view.watchlist.screens
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
+import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.itemsIndexed
 import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -48,7 +48,11 @@ fun WatchlistScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit
         return
     }
 
-    Surface(modifier = Modifier.horizontalGradientBackground(surfaceGradient)) {
+    Column(
+        modifier = Modifier
+            .horizontalGradientBackground(surfaceGradient)
+            .fillMaxSize()
+    ) {
         LazyColumn {
             itemsIndexed(
                 items = myWatchlist,
@@ -62,7 +66,7 @@ fun WatchlistScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit
                         },
                         {
                             moviesHomeInteractionEvents(
-                               HomeInteractionEvents.RemoveFromMyWatchlist(movie)
+                                HomeInteractionEvents.RemoveFromMyWatchlist(movie)
                             )
                         }
                     )

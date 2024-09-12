@@ -1,6 +1,5 @@
 package com.leomarkpaway.movieapp.view.trending.screens
 
-import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.rememberScrollState
@@ -12,16 +11,17 @@ import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.leomarkpaway.movieapp.intents.HomeInteractionEvents
+import com.leomarkpaway.movieapp.ui.theme.graySurface
 import com.leomarkpaway.movieapp.ui.theme.modifiers.horizontalGradientBackground
-import com.leomarkpaway.movieapp.ui.theme.moviesSurfaceGradient
 import com.leomarkpaway.movieapp.view.trending.components.MovieCategoryItem
 import com.leomarkpaway.movieapp.view.trending.viewmodel.TrendingViewModel
 
 @Composable
 fun TrendingScreen(moviesHomeInteractionEvents: (HomeInteractionEvents) -> Unit) {
-    val surfaceGradient = moviesSurfaceGradient(isSystemInDarkTheme())
+    val surfaceGradient = listOf(graySurface, Color.Black)
     val viewModel: TrendingViewModel = viewModel()
     val showLoading = remember { mutableStateOf(true) }
     val listOfSections = listOf(
