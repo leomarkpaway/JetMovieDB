@@ -27,6 +27,8 @@ class HomeViewModel @Inject constructor(
         emitSource(movieRepository.getMyWatchlist())
     }
 
+    val similarMoviesLiveData = MutableLiveData<List<Movie>>()
+
     init {
         viewModelScope.launch {
             movieRepository.getNowShowing().collect { movies ->
@@ -49,6 +51,17 @@ class HomeViewModel @Inject constructor(
 
     fun removeFromMyWatchlist(movie: Movie) = viewModelScope.launch(Dispatchers.IO) {
         movieRepository.removeFromMyWatchlist(movie)
+    }
+
+    fun getSimilarMovies(movieId: String) {
+        viewModelScope.launch {
+            movieRepository.getSimilarMovies(movieId)
+                .collect { movies ->
+                    if (movies.isNotEmpty()) {
+                        similarMoviesLiveData.value = movies
+                    }
+                }
+        }
     }
 
 }

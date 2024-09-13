@@ -18,10 +18,10 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
 import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
-import com.leomarkpaway.jetmoviedb.view.movie_details.viewmodel.MovieDetailViewModel
+import com.leomarkpaway.jetmoviedb.view.home.viewmodel.HomeViewModel
 
 @Composable
-fun SimilarMoviesSection(currentMovie: Movie?, viewModel: MovieDetailViewModel) {
+fun SimilarMoviesSection(currentMovie: Movie?, viewModel: HomeViewModel) {
     viewModel.getSimilarMovies(currentMovie?.id.toString())
     val similarMovies by viewModel.similarMoviesLiveData.observeAsState()
     similarMovies?.let { movies ->

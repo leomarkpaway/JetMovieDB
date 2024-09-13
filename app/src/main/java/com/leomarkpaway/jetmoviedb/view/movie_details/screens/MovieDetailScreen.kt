@@ -41,15 +41,15 @@ import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
 import com.leomarkpaway.jetmoviedb.ui.theme.extension.generateDominantColorState
 import com.leomarkpaway.jetmoviedb.ui.theme.graySurface
 import com.leomarkpaway.jetmoviedb.ui.theme.modifiers.verticalGradientBackground
+import com.leomarkpaway.jetmoviedb.view.home.viewmodel.HomeViewModel
 import com.leomarkpaway.jetmoviedb.view.movie_details.components.GenreSection
 import com.leomarkpaway.jetmoviedb.view.movie_details.components.SimilarMoviesSection
-import com.leomarkpaway.jetmoviedb.view.movie_details.viewmodel.MovieDetailViewModel
 
 @ExperimentalCoilApi
 @Composable
 fun MovieDetailScreen(movie: Movie, imageId: Int) {
     val expand = remember { mutableStateOf(false) }
-    val viewModel: MovieDetailViewModel = viewModel()
+    val viewModel: HomeViewModel = viewModel()
     var dominantColors = listOf(graySurface, Color.Black)
 
     if (imageId != 0) {
@@ -101,7 +101,7 @@ fun MovieDetailScreen(movie: Movie, imageId: Int) {
                         modifier = Modifier.padding(8.dp),
                         style = typography.h6
                     )
-                    IconButton(onClick = {}) {
+                    IconButton(onClick = {viewModel.addToMyWatchlist(movie)}) {
                         Icon(
                             imageVector = Icons.Default.LibraryAdd,
                             contentDescription = null,
