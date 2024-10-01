@@ -1,8 +1,8 @@
-package com.leomarkpaway.jetmoviedb.data.source.local.database.daos
+package com.leomarkpaway.jetmoviedb.model.source.local.database.daos
 
 import androidx.lifecycle.LiveData
 import androidx.room.*
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Genre
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Genre
 
 @Dao
 interface GenreDao {

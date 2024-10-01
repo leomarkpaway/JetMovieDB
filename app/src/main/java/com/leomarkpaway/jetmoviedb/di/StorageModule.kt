@@ -1,7 +1,7 @@
 package com.leomarkpaway.jetmoviedb.di
 
 import android.content.Context
-import com.leomarkpaway.jetmoviedb.data.source.local.preference.PreferenceManager
+import com.leomarkpaway.jetmoviedb.model.source.local.preference.PreferenceManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

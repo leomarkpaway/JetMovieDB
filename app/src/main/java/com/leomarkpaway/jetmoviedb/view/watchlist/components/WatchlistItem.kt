@@ -22,7 +22,7 @@ import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 import com.leomarkpaway.jetmoviedb.ui.theme.white
 
 @Composable

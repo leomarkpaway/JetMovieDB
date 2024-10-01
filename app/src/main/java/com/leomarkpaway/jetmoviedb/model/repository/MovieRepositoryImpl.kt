@@ -1,13 +1,13 @@
-package com.leomarkpaway.jetmoviedb.data.repository
+package com.leomarkpaway.jetmoviedb.model.repository
 
 import androidx.lifecycle.LiveData
 import com.leomarkpaway.jetmoviedb.BuildConfig
-import com.leomarkpaway.jetmoviedb.data.source.local.database.MoviesDatabase
-import com.leomarkpaway.jetmoviedb.data.source.local.database.daos.GenreDao
-import com.leomarkpaway.jetmoviedb.data.source.local.database.daos.MoviesDao
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Genre
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
-import com.leomarkpaway.jetmoviedb.data.source.remote.service.MovieApi
+import com.leomarkpaway.jetmoviedb.model.source.local.database.MoviesDatabase
+import com.leomarkpaway.jetmoviedb.model.source.local.database.daos.GenreDao
+import com.leomarkpaway.jetmoviedb.model.source.local.database.daos.MoviesDao
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Genre
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.service.MovieApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.catch

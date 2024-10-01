@@ -1,8 +1,8 @@
-package com.leomarkpaway.jetmoviedb.data.repository
+package com.leomarkpaway.jetmoviedb.model.repository
 
 import androidx.lifecycle.LiveData
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Genre
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Genre
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 import kotlinx.coroutines.flow.Flow
 
 interface MovieRepository {

@@ -25,8 +25,8 @@ import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import coil.compose.rememberImagePainter
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Genre
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Genre
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 import com.leomarkpaway.jetmoviedb.ui.theme.white
 import com.leomarkpaway.jetmoviedb.view.home.components.tags.InterestTag
 import kotlin.math.abs

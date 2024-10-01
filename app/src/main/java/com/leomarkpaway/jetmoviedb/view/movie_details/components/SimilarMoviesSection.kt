@@ -17,7 +17,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.unit.dp
 import coil.compose.rememberImagePainter
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 import com.leomarkpaway.jetmoviedb.view.home.viewmodel.HomeViewModel
 
 @Composable

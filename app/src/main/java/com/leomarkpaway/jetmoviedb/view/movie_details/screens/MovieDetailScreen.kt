@@ -37,7 +37,7 @@ import androidx.lifecycle.viewmodel.compose.viewModel
 import coil.annotation.ExperimentalCoilApi
 import coil.compose.ImagePainter
 import coil.compose.rememberImagePainter
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 import com.leomarkpaway.jetmoviedb.ui.theme.extension.generateDominantColorState
 import com.leomarkpaway.jetmoviedb.ui.theme.graySurface
 import com.leomarkpaway.jetmoviedb.ui.theme.modifiers.verticalGradientBackground

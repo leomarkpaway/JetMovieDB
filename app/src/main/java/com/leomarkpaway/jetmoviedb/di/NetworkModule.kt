@@ -1,7 +1,7 @@
 package com.leomarkpaway.jetmoviedb.di
 
 import com.leomarkpaway.jetmoviedb.BuildConfig
-import com.leomarkpaway.jetmoviedb.data.source.remote.service.MovieApi
+import com.leomarkpaway.jetmoviedb.model.source.remote.service.MovieApi
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

@@ -7,7 +7,7 @@ import android.view.WindowManager
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import coil.annotation.ExperimentalCoilApi
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 import com.leomarkpaway.jetmoviedb.ui.theme.MovieAppTheme
 import com.leomarkpaway.jetmoviedb.view.movie_details.screens.MovieDetailScreen
 import dagger.hilt.android.AndroidEntryPoint

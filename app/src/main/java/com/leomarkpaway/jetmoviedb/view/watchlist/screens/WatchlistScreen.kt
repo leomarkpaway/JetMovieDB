@@ -17,7 +17,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 import com.leomarkpaway.jetmoviedb.intents.HomeInteractionEvents
 import com.leomarkpaway.jetmoviedb.ui.theme.modifiers.horizontalGradientBackground
 import com.leomarkpaway.jetmoviedb.ui.theme.moviesSurfaceGradient

@@ -1,4 +1,4 @@
-package com.leomarkpaway.jetmoviedb.data.source.local.preference
+package com.leomarkpaway.jetmoviedb.model.source.local.preference
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey

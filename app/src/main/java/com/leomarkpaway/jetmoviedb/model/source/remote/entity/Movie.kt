@@ -1,4 +1,4 @@
-package com.leomarkpaway.jetmoviedb.data.source.remote.entity
+package com.leomarkpaway.jetmoviedb.model.source.remote.entity
 
 import androidx.room.Entity
 import androidx.room.PrimaryKey

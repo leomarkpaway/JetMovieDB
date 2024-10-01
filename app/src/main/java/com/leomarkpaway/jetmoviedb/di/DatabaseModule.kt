@@ -2,7 +2,7 @@ package com.leomarkpaway.jetmoviedb.di
 
 import android.content.Context
 import androidx.room.Room
-import com.leomarkpaway.jetmoviedb.data.source.local.database.MoviesDatabase
+import com.leomarkpaway.jetmoviedb.model.source.local.database.MoviesDatabase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn

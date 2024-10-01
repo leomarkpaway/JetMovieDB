@@ -1,4 +1,4 @@
-package com.leomarkpaway.jetmoviedb.data.source.local.database
+package com.leomarkpaway.jetmoviedb.model.source.local.database
 
 import androidx.room.TypeConverter
 

@@ -1,6 +1,6 @@
 package com.leomarkpaway.jetmoviedb.intents
 
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
 
 sealed class HomeInteractionEvents {
     data class OpenMovieDetail(val movie: Movie, val imageId: Int = 0) : HomeInteractionEvents()

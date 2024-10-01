@@ -1,8 +1,8 @@
-package com.leomarkpaway.jetmoviedb.data.source.remote.service
+package com.leomarkpaway.jetmoviedb.model.source.remote.service
 
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.GenreApiResponse
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.Movie
-import com.leomarkpaway.jetmoviedb.data.source.remote.entity.MovieListResponse
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.GenreApiResponse
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.Movie
+import com.leomarkpaway.jetmoviedb.model.source.remote.entity.MovieListResponse
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Path
