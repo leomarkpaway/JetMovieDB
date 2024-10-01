@@ -18,3 +18,13 @@ JetMovieDB is a sleek and dynamic movie discovery app built using Jetpack Compos
 <img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Watchlist.png" alt="screenshot" height="480"/>
 <img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Search.png" alt="screenshot" height="480"/>
 <img src="https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/Details.png" alt="screenshot" height="480"/>
+
+## 🛠️ **Installation**
+
+You can download the APK file directly from the link below:
+
+[Download APK](https://github.com/leomarkpaway/JetMovieDB/blob/master/demo/JetMovieDB.apk)
+
+1. Enable "Install from unknown sources" in your device settings.
+2. Download the APK file.
+3. Open the downloaded file and follow the prompts to install.
